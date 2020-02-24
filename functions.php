@@ -1,5 +1,18 @@
 <?php
 
+
+function add_theme_scripts() {
+    wp_enqueue_style( 'style', get_stylesheet_uri() );
+   
+   // wp_enqueue_style( 'slider', get_template_directory_uri() . '/css/slider.css', array(), '1.1', 'all');
+   
+   // wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array ( 'jquery' ), 1.1, true);
+   
+     //
+  }
+  add_action( 'wp_enqueue_scripts', 'add_theme_scripts' );
+
+
 // Ajouter la prise en charge des images mises en avant
 add_theme_support( 'post-thumbnails' );
 
@@ -36,7 +49,7 @@ function header_widgets_init() {
            // Le nom au pluriel
            'nom'                => _x('Apprenants', 'Post Type General Name'),
            // Le nom au singulier
-           'prenom'       => _x('Apprenant', 'Post Type Singular Name'),
+           'prenom'       => _x('Apprenants', 'Post Type Singular Name'),
            // Le libellé affiché dans le menu
            'menu_name'           => __('Apprenants'),
            // Les différents libellés de l'administration
@@ -71,7 +84,7 @@ function header_widgets_init() {
        );
    
        // On enregistre notre custom post type qu'on nomme ici avec ses arguments
-       register_post_type('personnes', $args);
+       register_post_type('Apprenants', $args);
    }
    
    add_action('init', 'wpm_custom_post_type', 0);
@@ -88,11 +101,11 @@ function header_widgets_init() {
     * @param post $post The post object
     * @link https://codex.wordpress.org/Plugin_API/Action_Reference/add_meta_boxes
     */
-   function personnes_add_meta_boxes($post)
+   function apprenants_add_meta_boxes($post)
    {
        add_meta_box('Apprenants_meta_box', __('Apprenants', 'Apprenants_example_plugin'), 'Apprenants_build_meta_box', 'Apprenants', 'normal', 'low');
    }
-   add_action('add_meta_boxes_Apprenants', 'Apprenants_add_meta_boxes');
+   add_action('add_meta_boxes_Apprenants', 'apprenants_add_meta_boxes');
    
    function Apprenants_build_meta_box($post)
    {
@@ -181,7 +194,7 @@ function header_widgets_init() {
     }
 
    }
-   add_action( 'save_post_Apprenants', 'Apprenants_save_meta_box_data' );
+   add_action( 'save_post_apprenants', 'apprenants_save_meta_box_data' );
 
    // add menu
 
@@ -203,4 +216,4 @@ function gitbreakers_menus() {
 
 add_action( 'init', 'gitbreakers_menus' );
 
-   
+
