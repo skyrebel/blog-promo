@@ -16,7 +16,3 @@ Version: 1.0
 .admin-bar .menu {
 	top: 32px; /* on prend en compte le décalage */
 }
-
-.header-img{
-    text-align: center;
-}
