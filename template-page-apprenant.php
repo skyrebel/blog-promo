@@ -30,6 +30,8 @@ echo '<p>';
 the_title();
 echo get_post_meta($post->ID, '_personnes_age', true) .'<br>'; 
 echo get_post_meta($post->ID, '_personnes_ville', true).'<br>';
+echo get_post_meta($post->ID, '_personnes_ville', true).'<br>';
+echo get_post_meta($post->ID, '_personnes_ville', true).'<br>';
 echo '</p>';  
 // Or like so:
 // $personnes = get_post_custom_values('personnes');
