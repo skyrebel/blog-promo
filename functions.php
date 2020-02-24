@@ -70,11 +70,16 @@ function header_widgets_init() {
    
        );
    
-       // On enregistre notre custom post type qu'on nomme ici "serietv" et ses arguments
+       // On enregistre notre custom post type qu'on nomme ici avec ses arguments
        register_post_type('personnes', $args);
    }
    
    add_action('init', 'wpm_custom_post_type', 0);
+
+   //ajouter un <menu>
+
+   
+   
    
    
    /**
@@ -177,4 +182,25 @@ function header_widgets_init() {
 
    }
    add_action( 'save_post_Apprenants', 'Apprenants_save_meta_box_data' );
+
+   // add menu
+
+  /**
+ * Register navigation menus uses wp_nav_menu in five places.
+ */
+function gitbreakers_menus() {
+
+	$locations = array(
+		'primary'  => __( 'Desktop Horizontal Menu', 'gitbreakers' ),
+		'expanded' => __( 'Desktop Expanded Menu', 'girbreakers' ),
+		'mobile'   => __( 'Mobile Menu', 'girbreakers' ),
+		'footer'   => __( 'Footer Menu', 'girbreakers' ),
+		'social'   => __( 'Social Menu', 'girbreakers' ),
+	);
+
+	register_nav_menus( $locations );
+}
+
+add_action( 'init', 'gitbreakers_menus' );
+
    

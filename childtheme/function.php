@@ -178,3 +178,20 @@ function header_widgets_init() {
    }
    add_action( 'save_post_Apprenants', 'Apprenants_save_meta_box_data' );
    
+
+   function gitbreakers_menus() {
+
+	$locations = array(
+		'primary'  => __( 'Desktop Horizontal Menu', 'gitbreakers' ),
+		'expanded' => __( 'Desktop Expanded Menu', 'girbreakers' ),
+		'mobile'   => __( 'Mobile Menu', 'girbreakers' ),
+		'footer'   => __( 'Footer Menu', 'girbreakers' ),
+		'social'   => __( 'Social Menu', 'girbreakers' ),
+	);
+
+	register_nav_menus( $locations );
+}
+
+add_action( 'init', 'gitbreakers_menus' );
+
+   
