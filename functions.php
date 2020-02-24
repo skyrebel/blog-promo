@@ -125,7 +125,6 @@ function wpm_custom_post_type()
 
 add_action('init', 'wpm_custom_post_type', 0);
 
-//ajouter un <menu>
 
 
     /***************************************************************       Fin Fonction Post Type        ***************************************************************************/
