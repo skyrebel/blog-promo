@@ -125,7 +125,7 @@ function wpm_custom_post_type()
 
 add_action('init', 'wpm_custom_post_type', 0);
 
-//ajouter un <menu>
+
 
 
     /***************************************************************       Fin Fonction Post Type        ***************************************************************************/
@@ -159,6 +159,7 @@ function apprenants_build_meta_box($post)
     $prenom = get_post_meta($post->ID, '_apprenants_prenom', true);
     $github  = get_post_meta($post->ID, '_apprenants_github', true);
     $linkedIn   = get_post_meta($post->ID, '_apprenants_linkedIn', true);
+    $portfolio   = get_post_meta($post->ID, '_apprenants_portfolio', true);
 
 
 ?>
@@ -181,6 +182,11 @@ function apprenants_build_meta_box($post)
         <h3><?php _e('linkedIn', 'apprenants_example_plugin'); ?></h3>
         <p>
             <input type="text" name="linkedIn" style="width: 30vw" value="<?php echo $linkedIn; ?>" />
+        </p>
+
+        <h3><?php _e('portfolio', 'apprenants_example_plugin'); ?></h3>
+        <p>
+            <input type="text" name="portfolio" style="width: 30vw" value="<?php echo $portfolio; ?>" />
         </p>
 
     </div>
@@ -239,6 +245,12 @@ function apprenants_save_meta_box_data($post_id)
     //linkedIn string
     if (isset($_REQUEST['linkedIn'])) {
         update_post_meta($post_id, '_apprenants_linkedIn', sanitize_text_field($_POST['linkedIn']));
+    }
+
+      // store custom fields values
+    //portfolio string
+    if (isset($_REQUEST['portfolio'])) {
+        update_post_meta($post_id, '_apprenants_portfolio', sanitize_text_field($_POST['portfolio']));
     }
 }
 add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
