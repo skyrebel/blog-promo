@@ -13,6 +13,3 @@ Version: 1.0
     top: 0px;
 }
 
-.admin-bar .menu {
-	top: 32px; /* on prend en compte le décalage */
-}
