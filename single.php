@@ -1,17 +1,21 @@
-
 <?php 
 	if( is_single('article') ) { } // Teste si la page est de type single (lit article)
 ?>
 
 <?php get_header(); ?>
+
 	<h1>SINGLE</h1>
 
 	<!-- derniers articles publiés -->
 	<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 		<article class="post">
-		<?php the_post_thumbnail(); ?> <!--img article --> 
+		<h2><?php the_title(); ?></h2>   <!--titre article --> 
 
-		<h1><?php the_title(); ?></h1> <!--titre article --> 
+		<?php if ( has_post_thumbnail() ): ?> <!--verif si img article --> 
+			<div class="post__thumbnail">
+				<?php the_post_thumbnail(); ?>
+			</div>
+		<?php endif; ?>
 
 		<div class="post__meta">
 			<p>
@@ -24,7 +28,6 @@
 			<?php the_content(); ?>
 		</div>
 		</article>
-
-  <?php endwhile; endif; ?>
+    <?php endwhile; endif; ?>
 
 <?php get_footer(); ?>

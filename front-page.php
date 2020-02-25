@@ -3,6 +3,7 @@
 ?>
 
 <?php get_header(); ?>
+
 	<h1>HOME</h1>
 
 	<!-- derniers articles publiés -->
@@ -11,8 +12,11 @@
 		<article class="post">
 			<h2><?php the_title(); ?></h2>   <!--titre article --> 
 
-			
-        	<?php the_post_thumbnail(); ?> <!--img article --> 
+        <?php if ( has_post_thumbnail() ): ?> <!--verif si img article --> 
+            <div class="post__thumbnail">
+                <?php the_post_thumbnail(); ?>
+            </div>
+		<?php endif; ?>
             
             <p class="post__meta">
                 Publié le <?php the_time( get_option( 'date_format' ) ); ?> <!--date article --> 
@@ -25,7 +29,6 @@
                 <a href="<?php the_permalink(); ?>" class="post__link">Lire la suite</a>
             </p>
 		</article>
-
 	<?php endwhile; endif; ?>
 
 <?php get_footer(); ?>

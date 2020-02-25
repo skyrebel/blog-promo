@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> >
+<html <?php language_attributes(); ?> > <!-- langue du site -->
   <head>
-      <meta charset="<?php bloginfo( 'charset' ); ?>" >
+      <meta charset="<?php bloginfo( 'charset' ); ?>" > <!-- encodage du site -->
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
       
-      <?php wp_head(); ?>
+      <?php wp_head(); ?> <!-- chargement scripts et styles, et titre activé ds function.php -->
   </head>
 
   <body <?php body_class(); ?>>
