@@ -7,10 +7,11 @@
       <?php wp_head(); ?> <!-- chargement scripts et styles, et titre activé ds function.php -->
   </head>
 
-  <body <?php body_class(); ?>>
-    <header class="header-img">
+  <body> 
+
+    <header>  <!-- logo du site -->
       <a href="<?php echo home_url( '/' ); ?>">
-        <img src="<?php echo get_template_directory_uri(); ?> ./assets/me" alt="Logo">
+        <img src="<?php echo get_template_directory_uri(); ?> ./assets/medias/logo.png" alt="Logo">
       </a>  
     </header>
-      <?php wp_body_open(); ?>
+    

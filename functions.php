@@ -21,8 +21,20 @@
     add_theme_support('title-tag');
 
 
-        /***************************************************************   Fin Activaton du thème    ***************************************************************************/
-
+        /***************************************************************   Bootsrap    ***************************************************************************/
+    // ajout utiliation de BootStrap
+    function bootstrap_scripts_enqueue()
+    {
+        // all styles
+        wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.css');
+        wp_enqueue_style('blogBreakers-style', get_stylesheet_uri());
+    
+        // all scripts
+        // wp_enqueue_script( 'jquery-3-js', get_template_directory_uri() . '/assets/js/jquery-3.4.1.min.js');
+        // wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.min.js');
+        wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.js');
+    }
+    add_action('wp_enqueue_scripts', 'bootstrap_scripts_enqueue', 80);
 
 
         /***************************************************************       Création du Menu        ***************************************************************************/
