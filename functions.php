@@ -1,15 +1,21 @@
 <?php
 
-        /***************************************************************   Activaton du thème    ***************************************************************************/
+        /******************************************** Activaton du thème et charger scripts et styles    ***************************************************************************/
     function add_theme_scripts()
     {
-        wp_enqueue_style('style', get_stylesheet_uri());
+        // boostrap
+        wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.css');
+        wp_enqueue_style('blogBreakers-style', get_stylesheet_uri());
+        wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.js');
+        wp_enqueue_script( 'jquery-3-js', get_template_directory_uri() . '/assets/js/jquery-3.4.1.min.js');
+        wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.min.js');
 
-        // wp_enqueue_style( 'slider', get_template_directory_uri() . '/css/slider.css', array(), '1.1', 'all');
+        //css
+        wp_enqueue_style( 'gitbreakers', get_template_directory_uri() . '/assets/css/style.css', array(), '1.1', 'all');
 
-        // wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array ( 'jquery' ), 1.1, true);
+        //js
+        wp_enqueue_script( 'script', get_template_directory_uri() . '/assets/js/script.js', array ( 'jquery' ), 1.1, true);
 
-        //
     }
     add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
@@ -19,23 +25,6 @@
 
     // Ajouter automatiquement le titre du site dans l'en-tête du site
     add_theme_support('title-tag');
-
-
-        /***************************************************************   Bootsrap    ***************************************************************************/
-    // ajout utiliation de BootStrap
-    function bootstrap_scripts_enqueue()
-    {
-        // all styles
-        wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.css');
-        wp_enqueue_style('blogBreakers-style', get_stylesheet_uri());
-    
-        // all scripts
-        // wp_enqueue_script( 'jquery-3-js', get_template_directory_uri() . '/assets/js/jquery-3.4.1.min.js');
-        // wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.min.js');
-        wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.js');
-    }
-    add_action('wp_enqueue_scripts', 'bootstrap_scripts_enqueue', 80);
-
 
         /***************************************************************       Création du Menu        ***************************************************************************/
 
