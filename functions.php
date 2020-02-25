@@ -44,25 +44,10 @@
 
 add_action('widgets_init', 'header_widgets_init');
 
-    /**
-     * Register navigation menus uses wp_nav_menu in five places.
-     */
-
-    function gitbreakers_menus()
-    {
-
-        $locations = array(
-            'primary'  => __('Desktop Horizontal Menu', 'gitbreakers'),
-            'expanded' => __('Desktop Expanded Menu', 'gitbreakers'),
-            'mobile'   => __('Mobile Menu', 'gitbreakers'),
-            'footer'   => __('Footer Menu', 'gitbreakers'),
-            'social'   => __('Social Menu', 'gitbreakers'),
-        );
-
-        register_nav_menus($locations);
-    }
-
-    add_action('init', 'gitbreakers_menus');
+register_nav_menus( array(
+	'main' => 'Menu Principal',
+	'footer' => 'Bas de page',
+) );
 
 
         /***************************************************************     Fin Création du Menu        ***************************************************************************/
@@ -420,7 +405,7 @@ add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
       // store custom fields values
       // nom string
       if (isset($_REQUEST['titre'])) {
-          update_post_meta($post_id, '_projets_titre', sanitize_text_field($_POST['nom']));
+          update_post_meta($post_id, '_projets_titre', sanitize_text_field($_POST['titre']));
       }
   
       // store custom fields values
