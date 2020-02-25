@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Nom du modèle
+Template Name: gitbreakers
 */
 
 // Votre code ici
@@ -12,15 +12,15 @@ Template Name: Nom du modèle
 
 // 1. on défini ce que l'on veut
 $args = array(
-    'post_type' => 'personnes',
+    'post_type' => 'Apprenants',
     'posts_per_page' => 5
 );
 
 // 2. on exécute la query
-$personnes_query = new WP_Query($args);
+$apprenants_query = new WP_Query($args);
 
 // 3. on lance la boucle !
-if ($personnes_query->have_posts()) : while ($personnes_query->have_posts()) : $personnes_query->the_post();
+if ($apprenants_query->have_posts()) : while ($apprenants_query->have_posts()) : $apprenants_query->the_post();
 // Echo some markup
 // echo 'bouibouibouiboui';
 // As with regular posts, you can use all normal display functions, such as
@@ -28,10 +28,11 @@ if ($personnes_query->have_posts()) : while ($personnes_query->have_posts()) : $
 // Within the loop, you can access custom fields like so:
 echo '<p>';
 the_title();
-echo get_post_meta($post->ID, '_personnes_age', true) .'<br>'; 
-echo get_post_meta($post->ID, '_personnes_ville', true).'<br>';
-echo get_post_meta($post->ID, '_personnes_ville', true).'<br>';
-echo get_post_meta($post->ID, '_personnes_ville', true).'<br>';
+echo get_post_meta($post->ID, '_apprenants_nom', true) .'<br>'; 
+echo get_post_meta($post->ID, '_apprenants_prenom', true).'<br>';
+echo get_post_meta($post->ID, '_apprenants_github', true).'<br>';
+echo get_post_meta($post->ID, '_apprenants_linkedIn', true).'<br>';
+echo get_post_meta($post->ID, '_apprenants_portfolio', true).'<br>';
 echo '</p>';  
 // Or like so:
 // $personnes = get_post_custom_values('personnes');

@@ -369,14 +369,14 @@ add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
       // $current_nom = get_post_meta($post->ID, '_personnes_nom', true);
   
       // retrieve the _personnes_age current value
-      $nom = get_post_meta($post->ID, '_projets_nom', true);
+      $titre = get_post_meta($post->ID, '_projets_titre', true);
       $image = get_post_meta($post->ID, '_projets_image', true);
   
   ?>
       <div class='inside'>
-          <h3><?php _e('nom', 'projets_example_plugin'); ?></h3>
+          <h3><?php _e('titre', 'projets_example_plugin'); ?></h3>
           <p>
-              <input type="text" name="nom" style="width: 30vw" value="<?php echo $nom; ?>" />
+              <input type="text" name="titre" style="width: 30vw" value="<?php echo $titre; ?>" />
           </p>
   
           <h3><?php _e('image', 'projets_example_plugin'); ?></h3>
@@ -419,8 +419,8 @@ add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
   
       // store custom fields values
       // nom string
-      if (isset($_REQUEST['nom'])) {
-          update_post_meta($post_id, '_projets_nom', sanitize_text_field($_POST['nom']));
+      if (isset($_REQUEST['titre'])) {
+          update_post_meta($post_id, '_projets_titre', sanitize_text_field($_POST['nom']));
       }
   
       // store custom fields values
