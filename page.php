@@ -10,11 +10,93 @@
 
 <?php get_header(); ?>
 
+<<<<<<< HEAD
 <!--boucle: contrôle du contenu à afficher, affiche tt type de contenu, données de l'article à afficher ds la boucle ex the_title --> 
 <?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
     <div class="content">
     	<?php the_content(); ?>
     </div>
 <?php endwhile; endif; ?>
+=======
+<?php
+/*
+Template Name: gitbreakers
+*/
+
+// Votre code ici
+?>
+
+<?php
+
+// 1. on défini ce que l'on veut
+$args = array(
+    'post_type' => 'Apprenants',
+    'posts_per_page' => 1
+);
+
+// 2. on exécute la query
+$apprenants_query = new WP_Query($args);
+
+// 3. on lance la boucle !
+ if ($apprenants_query->have_posts()) : while ($apprenants_query->have_posts()) : $apprenants_query->the_post();
+// Echo some markup
+// echo 'bouibouibouiboui';
+// As with regular posts, you can use all normal display functions, such as
+
+// Within the loop, you can access custom fields like so:
+echo '<p>';
+the_title();
+echo get_post_meta($post->ID, '_apprenants_nom', true) .'<br>'; 
+echo get_post_meta($post->ID, '_apprenants_prenom', true).'<br>';
+echo get_post_meta($post->ID, '_apprenants_github', true).'<br>';
+echo get_post_meta($post->ID, '_apprenants_linkedIn', true).'<br>';
+echo get_post_meta($post->ID, '_apprenants_portfolio', true).'<br>';
+echo '</p>';  
+// Or like so:
+// $personnes = get_post_custom_values('personnes');
+// echo $personnes[0];
+// echo 'yo'; // Markup closing tags.
+endwhile;
+endif;
+
+// 4. On réinitialise à la requête principale (important)
+wp_reset_postdata();
+?>
+
+<?php
+
+// 1. on défini ce que l'on veut
+$args = array(
+    'post_type' => 'projets',
+    'posts_per_page' => 2
+);
+
+// 2. on exécute la query
+$projets_query = new WP_Query($args);
+
+// 3. on lance la boucle !
+ if ($projets_query->have_posts()) : while ($projets_query->have_posts()) : $projets_query->the_post();
+// Echo some markup
+// echo 'bouibouibouiboui';
+// As with regular posts, you can use all normal display functions, such as
+
+// Within the loop, you can access custom fields like so:
+echo '<p>';
+the_title();
+echo get_post_meta($post->ID, '_projets_titre', true) .'<br>'; 
+echo get_post_meta($post->ID, '_projets_image', true).'<br>';
+echo '</p>';  
+// Or like so:
+// $personnes = get_post_custom_values('personnes');
+// echo $personnes[0];
+// echo 'yo'; // Markup closing tags.
+endwhile;
+endif;
+
+// 4. On réinitialise à la requête principale (important)
+wp_reset_postdata();
+?>
+
+>>>>>>> cdaed9443787d43e97c6ac9d6865cc422e98493e
 
 <?php get_footer(); ?>
