@@ -1,3 +1,7 @@
+<?php 
+	if( is_page('redac') ) { } // Teste si la page est de type page 'redac'
+?>
+
 <?php get_header(); ?>
 
 	<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
