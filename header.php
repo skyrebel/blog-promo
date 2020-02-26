@@ -11,22 +11,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link rel="stylesheet" href="style.css">
 
-
-<!-- **************** moteur de recherche ********************** -->
-
-
-      <?php get_search_form(); ?>
-
-      <!-- **************** end moteur de recherche***************** -->
-
       <?php wp_head(); ?>
   </head>
 
   <body <?php body_class(); ?>>
     <header class="header-img">
-      <a href="<?php echo home_url( '/' ); ?>">
-        <img src="<?php echo get_template_directory_uri(); ?> ./" alt="Logo">
-      </a>  
+      
       
       <?php wp_head(); ?> <!-- chargement scripts et styles, et titre activé ds function.php -->
   </head>
@@ -34,10 +24,10 @@
   <body> 
 
     <header>  <!-- logo du site -->
-
-      <h1><img src="<?php echo get_template_directory_uri(); ?> ./assets/medias/logo.png" alt="Logo"></h1>
-      <h1><img src="<?php echo get_template_directory_uri(); ?> /assets/medias/logo.png" alt="Logo"></h1>
-
+      <h1><img src="<?php echo get_template_directory_uri(); ?> assets/medias/logo.png" alt="Logo"></h1>
+        
+      <!-- menu -->
+      
     </header>
     
 
@@ -46,10 +36,7 @@
 
 <body <?php body_class(); ?>>
   <header class="site__header">
-    <a href="<?php echo home_url('/'); ?>">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
-    </a>
-  </header>
+   
   <?php wp_body_open(); ?>
 
 <?php
