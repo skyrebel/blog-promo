@@ -34,10 +34,18 @@
   <body> 
 
     <header>  <!-- logo du site -->
-
-      <h1><img src="<?php echo get_template_directory_uri(); ?> ./assets/medias/logo.png" alt="Logo"></h1>
-      <h1><img src="<?php echo get_template_directory_uri(); ?> /assets/medias/logo.png" alt="Logo"></h1>
-
+      <h1><img src="<?php echo get_template_directory_uri(); ?> assets/medias/logo.png" alt="Logo"></h1>
+        
+      <!-- menu -->
+      <?php 
+        wp_nav_menu(
+          array(
+              'theme_location' => 'main',
+              'container' => 'ul', // afin d'éviter d'avoir une div autour 
+              'menu_class' => 'site__header__menu', // ma classe personnalisée 
+          )
+        );
+      ?>
     </header>
     
 

@@ -4,17 +4,17 @@
     function add_theme_scripts()
     {
         // boostrap
-        wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.css');
+        wp_enqueue_style('bootstrap-css', get_template_directory_uri() . 'assets/css/bootstrap.css');
         wp_enqueue_style('blogBreakers-style', get_stylesheet_uri());
-        wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.js');
-        wp_enqueue_script( 'jquery-3-js', get_template_directory_uri() . '/assets/js/jquery-3.4.1.min.js');
-        wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.min.js');
+        wp_enqueue_script('bootstrap-js', get_template_directory_uri() . 'assets/js/bootstrap.js');
+        wp_enqueue_script( 'jquery-3-js', get_template_directory_uri() . 'assets/js/jquery-3.4.1.min.js');
+        wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . 'assets/js/bootstrap.min.js');
 
         //css
-        wp_enqueue_style( 'gitbreakers', get_template_directory_uri() . '/assets/css/style.css', array(), '1.1', 'all');
+        wp_enqueue_style( 'gitbreakers', get_template_directory_uri() . 'assets/css/style.css', array(), '1.1', 'all');
 
         //js
-        wp_enqueue_script( 'script', get_template_directory_uri() . '/assets/js/script.js', array ( 'jquery' ), 1.1, true);
+        wp_enqueue_script( 'script', get_template_directory_uri() . 'assets/js/script.js', array ( 'jquery' ), 1.1, true);
 
     }
     add_action('wp_enqueue_scripts', 'add_theme_scripts');
@@ -27,8 +27,6 @@
     add_theme_support('title-tag');
 
         /***************************************************************       Création du Menu        ***************************************************************************/
-
-
     function header_widgets_init()
     {
 
@@ -70,8 +68,6 @@ register_nav_menus( array(
 
 
         /***************************************************************     Début Fonction  Post Type      ***************************************************************************/
-
-
     
     /*
    * On utilise une fonction pour créer notre custom post type 'Apprenants'
