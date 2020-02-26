@@ -155,6 +155,7 @@ function apprenants_build_meta_box($post)
     $github  = get_post_meta($post->ID, '_apprenants_github', true);
     $linkedIn   = get_post_meta($post->ID, '_apprenants_linkedIn', true);
     $portfolio   = get_post_meta($post->ID, '_apprenants_portfolio', true);
+    $avatar   = get_post_meta($post->ID, '_apprenants_avatar', true);
 
 
 ?>
@@ -182,6 +183,10 @@ function apprenants_build_meta_box($post)
         <h3><?php _e('portfolio', 'apprenants_example_plugin'); ?></h3>
         <p>
             <input type="text" name="portfolio" style="width: 30vw" value="<?php echo $portfolio; ?>" />
+        </p>
+
+        <h3><?php _e('avatar', 'apprenants_example_plugin'); ?></h3>
+            <input type="text" name="avatar" style="width: 30vw" value="<?php echo $avatar; ?>" />
         </p>
 
     </div>
@@ -247,6 +252,15 @@ function apprenants_save_meta_box_data($post_id)
     if (isset($_REQUEST['portfolio'])) {
         update_post_meta($post_id, '_apprenants_portfolio', sanitize_text_field($_POST['portfolio']));
     }
+
+        // store custom fields values
+    //avatar string
+    if (isset($_REQUEST['avatar'])) {
+        update_post_meta($post_id, '_apprenants_avatar', sanitize_text_field($_POST['avatar']));
+    }
+
+
+
 }
 add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
 
