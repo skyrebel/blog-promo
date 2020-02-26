@@ -116,7 +116,7 @@ function wpm_custom_post_type_apprenants()
     );
 
     // On enregistre notre custom post type qu'on nomme ici avec ses arguments
-    register_post_type('apprenants', $args);
+    register_post_type('Apprenants', $args);
 }
 
 add_action('init', 'wpm_custom_post_type_apprenants', 0);
