@@ -8,8 +8,33 @@ Requires at least: WordPress 5.0
 Version: 1.0
 */
 
-.menu {
-    position: fixed;
-    top: 0px;
+/******************************* background ******************************************/
+.bg-brown{
+    background-color: #eccfad;
 }
+.bg-header{
+    background-image: url(../medias/bg-header.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg-orange{
+    background-image: url(../medias/label-promo.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 60%;
+}
+.bg-blue{
+    background-color: #159099;
+}
+/******************************* font ******************************************/
+
+/******************************* colors ******************************************/
+.black{
+    color: black;
+}
+/******************************* header ******************************************/
+.margin-logo{
+    margin: 35px 198px;
+}
+
 
