@@ -7,7 +7,7 @@
 <!--boucle: contrôle du contenu à afficher, affiche tt type de contenu, données de l'article à afficher ds la boucle ex the_title --> 
 <?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
 
-	<?php the_content(); ?>
+
 
   	<!-- derniers articles publiés -->
 	<article class="post">
