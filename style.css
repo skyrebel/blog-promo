@@ -1,26 +1,57 @@
 /*
 Theme Name: gitbreakers
-Theme URI: https://capitainewp.io
-Author: ACK_ATIM
+Theme URI: https://gitbreakerswp.io
+Author: SADKI Rayan, PEREIRA GOMES Fiona, SANTOS Sylvain, BACQUET Hugo.
 Author URI: https://dysign.fr
-Description: Mon premier thème !
+Description: Blog vintage/retro en bootstrap.
 Requires at least: WordPress 5.0
 Version: 1.0
 */
 
+/******************************* background ******************************************/
+.bg-brown{
+    background-color: #eccfad;
+}
+.bg-header{
+    background-image: url(../medias/bg-header.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bg-orange{
+    background-image: url(../medias/label-promo.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 60%;
+}
+.bg-blue{
+    background-color: #159099;
+}
+.bg-card-white{
+    background-color: #ffffff;
+    border-radius: 5%;
+}
+/******************************* font ******************************************/
+@import url('https://fonts.googleapis.com/css?family=Poppins:500&display=swap');
 
-.menu {
-    position: fixed;
-    top: 0px;
+.poppins{
+    font-family: 'Poppins' ;
 }
 
-.admin-bar .menu {
-	top: 32px; /* on prend en compte le décalage */
+/******************************* colors ******************************************/
+.black{
+    color: black;
+}
+/******************************* header ******************************************/
+
+/******************************* redac section ***************************************/
+.social-link > a:hover{
+    text-decoration: none!important;
+    color: black;
+    border-bottom: 2px solid black;
+    bottom: -2px;
+    transition: width .1s;
+    width: 100%;
 }
 
-/* body{
 
-    text-align: center;
-
-} */
 
