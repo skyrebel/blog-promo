@@ -1,5 +1,5 @@
 <?php 
-	if( is_page('article') ) { } // Teste si la page est de type page 'article'
+	if( is_page('articles') ) { } // Teste si la page est de type page 'article'
 ?>
 
 <?php // detecte la page comme un template à activer ds wordpress
@@ -17,7 +17,7 @@
 // 1. on défini ce que l'on veut
 $args = array(
     'post_type' => 'article',
-    'posts_per_page' => 2
+    'posts_per_page' => 3
 );
 
 // 2. on exécute la query
