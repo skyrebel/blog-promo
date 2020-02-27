@@ -43,12 +43,13 @@
         ));
     }
 
-add_action('widgets_init', 'header_widgets_init');
+    add_action('widgets_init', 'header_widgets_init');
 
-register_nav_menus( array(
-	'main' => 'Menu Principal',
-	'footer' => 'Bas de page',
-) );
+
+        register_nav_menus( array(
+            'main' => 'Menu Principal',
+            'footer' => 'Bas de page',
+        ) );
 
 
         /***************************************************************     Fin Création du Menu        ***************************************************************************/
@@ -102,10 +103,10 @@ function wpm_custom_post_type_apprenants()
 
     $args = array(
         'label'               => __('apprenants'),
-        'description'         => __('Tout tout tout'),
+        'description'         => __('La rédaction'),
         'labels'              => $labels,
         // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-        'supports'            => array('title'),
+        'supports'            => array( 'title', 'editor', 'excerpt',  'thumbnail',  'revisions', 'custom-fields', ),
         /* 
            * Différentes options supplémentaires
            */
@@ -149,7 +150,7 @@ function apprenants_build_meta_box($post)
     wp_nonce_field(basename(__FILE__), 'apprenants_meta_box_nonce');
 
     // retrieve the _personnes_nom current value
-    // $current_nom = get_post_meta($post->ID, '_personnes_nom', true);
+     //$current_nom = get_post_meta($post->ID, '_personnes_nom', true);
 
     // retrieve the _personnes_age current value
     $nom = get_post_meta($post->ID, '_apprenants_nom', true);
@@ -267,6 +268,15 @@ function apprenants_save_meta_box_data($post_id)
 add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
 
 
+function apprenants_post_thumbnails() {
+		
+    add_theme_support( 'custom-background' );
+    add_theme_support( 'custom-logo' );
+    add_theme_support( 'post-thumbnails' );
+}
+add_action( 'after_setup_theme', 'apprenants_post_thumbnails' );
+
+
 /***************************************************************      Fin Save Meta Box        ***************************************************************************/
 
 
@@ -299,18 +309,18 @@ add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
           // Le nom au pluriel
           'name'                => _x('projets', 'Post Type General Name'),
           // Le nom au singulier
-          'singular_name'       => _x('projets', 'Post Type Singular Name'),
+          'singular_name'       => _x('projet', 'Post Type Singular Name'),
           // Le libellé affiché dans le menu
           'menu_name'           => __('projets'),
           // Les différents libellés de l'administration
           'all_items'           => __('Tous les projets'),
           'view_item'           => __('Voir les projets'),
-          'add_new_item'        => __('Ajouter un nouvel projets'),
+          'add_new_item'        => __('Ajouter un nouveau projet'),
           'add_new'             => __('Ajouter'),
-          'edit_item'           => __('Editer un profil'),
-          'update_item'         => __('Modifier un profil'),
-          'search_items'        => __('Rechercher un projets'),
-          'not_found'           => __('Apprenant non trouvée'),
+          'edit_item'           => __('Editer un projet'),
+          'update_item'         => __('Modifier un projet'),
+          'search_items'        => __('Rechercher un projet'),
+          'not_found'           => __('Projet non trouvée'),
           'not_found_in_trash'  => __('Non trouvée dans la corbeille'),
       );
   
@@ -318,10 +328,10 @@ add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
   
       $args = array(
           'label'               => __('projets'),
-          'description'         => __('Tout tout tout'),
+          'description'         => __('Projets Réalisés'),
           'labels'              => $labels,
           // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-          'supports'            => array('title'),
+          'supports'            => array( 'title', 'editor', 'excerpt',  'thumbnail',  'revisions', 'custom-fields', ),
           /* 
              * Différentes options supplémentaires
              */
@@ -467,20 +477,20 @@ register_sidebar( array(
         // On rentre les différentes dénominations de notre custom post type qui seront affichées dans l'administration
         $labels = array(
             // Le nom au pluriel
-            'name'                => _x('article', 'Post Type General Name'),
+            'name'                => _x('articles', 'Post Type General Name'),
             // Le nom au singulier
             'singular_name'       => _x('article', 'Post Type Singular Name'),
             // Le libellé affiché dans le menu
-            'menu_name'           => __('article'),
+            'menu_name'           => __('articles'),
             // Les différents libellés de l'administration
-            'all_items'           => __('Tous les article'),
-            'view_item'           => __('Voir les article'),
+            'all_items'           => __('Tous les articles'),
+            'view_item'           => __('Voir les articles'),
             'add_new_item'        => __('Ajouter un nouvel article'),
             'add_new'             => __('Ajouter'),
             'edit_item'           => __('Editer un profil'),
             'update_item'         => __('Modifier un profil'),
             'search_items'        => __('Rechercher un article'),
-            'not_found'           => __('Apprenant non trouvée'),
+            'not_found'           => __('Article non trouvée'),
             'not_found_in_trash'  => __('Non trouvée dans la corbeille'),
         );
     
@@ -488,10 +498,10 @@ register_sidebar( array(
     
         $args = array(
             'label'               => __('article'),
-            'description'         => __('Tout tout tout'),
+            'description'         => __('Articles Publiés'),
             'labels'              => $labels,
             // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-            'supports'            => array('title'),
+            'supports'            => array( 'title', 'editor', 'excerpt',  'thumbnail',  'revisions', 'custom-fields', ),
             /* 
                * Différentes options supplémentaires
                */
@@ -621,16 +631,6 @@ register_sidebar( array(
         }
     }
     add_action('save_post_article', 'article_save_meta_box_data');
-  
-  
-  
-    /************************************************************     déclaration d'une sidebar   ******************************************************************/
-  
-  
-  register_sidebar( array(
-      'id' => 'blog-sidebar',
-      'name' => 'gitbreakers',
-  ) );
   
   
   
