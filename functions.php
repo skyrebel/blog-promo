@@ -43,12 +43,13 @@
         ));
     }
 
-add_action('widgets_init', 'header_widgets_init');
+    add_action('widgets_init', 'header_widgets_init');
+    
 
-register_nav_menus( array(
-	'main' => 'Menu Principal',
-	'footer' => 'Bas de page',
-) );
+        register_nav_menus( array(
+            'main' => 'Menu Principal',
+            'footer' => 'Bas de page',
+        ) );
 
 
         /***************************************************************     Fin Création du Menu        ***************************************************************************/
