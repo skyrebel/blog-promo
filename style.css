@@ -44,17 +44,13 @@ Version: 1.0
 /******************************* header ******************************************/
 
 /******************************* redac section ***************************************/
-.social-link > a{
+.social-link > a:hover{
     text-decoration: none!important;
     color: black;
-    background: linear-gradient(to bottom, #ea963f 0%, #ea963f 100%);
-    background-position: 0 100%;
-    background-repeat: repeat-x;
-    background-size: 1px 1px;
-    transition: background-size .4s;
-}
-.social-link > a:hover{
-    background-size: 4px 50px;
+    border-bottom: 2px solid black;
+    bottom: -2px;
+    transition: width .1s;
+    width: 100%;
 }
 
 
