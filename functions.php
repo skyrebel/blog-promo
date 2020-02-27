@@ -255,9 +255,9 @@ function apprenants_save_meta_box_data($post_id)
 
         // store custom fields values
     //avatar string
-    if (isset($_REQUEST['avatar'])) {
-        update_post_meta($post_id, '_apprenants_avatar', sanitize_text_field($_POST['avatar']));
-    }
+    // if (isset($_REQUEST['avatar'])) {
+    //     update_post_meta($post_id, '_apprenants_avatar', sanitize_text_field($_POST['avatar']));
+    // }
 
 
 
