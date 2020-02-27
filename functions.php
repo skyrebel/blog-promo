@@ -96,7 +96,7 @@
 =======
     /***************************************************************       Création du Menu        ***************************************************************************/
     function wpbootstrap_after_setup_theme() {
-        // On ajoute un menu
+        // On ajoute un menu^G%le3@kwYE(oZfD!E
         register_nav_menu('header_menu', "Menu du header");
         // On ajoute une classe php permettant de gérer les menus Bootstrap
         require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
@@ -443,7 +443,7 @@ add_action( 'after_setup_theme', 'apprenants_post_thumbnails' );
     /***************************************************************    Post Type      ***************************************************************************/
     
     /*
-   * On utilise une fonction pour créer notre custom post type 'Apprenants'
+   * On utilise une fonction pour créer notre custom post type 'Projets'
    */
 
 <<<<<<< HEAD
