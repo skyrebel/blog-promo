@@ -44,7 +44,7 @@
     }
 
     add_action('widgets_init', 'header_widgets_init');
-    
+
 
         register_nav_menus( array(
             'main' => 'Menu Principal',
@@ -106,7 +106,7 @@ function wpm_custom_post_type_apprenants()
         'description'         => __('Tout tout tout'),
         'labels'              => $labels,
         // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-        'supports'            => array('title'),
+        'supports'            => array( 'title', 'editor', 'excerpt',  'thumbnail',  'revisions', 'custom-fields', ),
         /* 
            * Différentes options supplémentaires
            */
@@ -150,7 +150,7 @@ function apprenants_build_meta_box($post)
     wp_nonce_field(basename(__FILE__), 'apprenants_meta_box_nonce');
 
     // retrieve the _personnes_nom current value
-    // $current_nom = get_post_meta($post->ID, '_personnes_nom', true);
+     //$current_nom = get_post_meta($post->ID, '_personnes_nom', true);
 
     // retrieve the _personnes_age current value
     $nom = get_post_meta($post->ID, '_apprenants_nom', true);
@@ -268,6 +268,15 @@ function apprenants_save_meta_box_data($post_id)
 add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
 
 
+function apprenants_post_thumbnails() {
+		
+    add_theme_support( 'custom-background' );
+    add_theme_support( 'custom-logo' );
+    add_theme_support( 'post-thumbnails' );
+}
+add_action( 'after_setup_theme', 'apprenants_post_thumbnails' );
+
+
 /***************************************************************      Fin Save Meta Box        ***************************************************************************/
 
 
@@ -322,7 +331,7 @@ add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
           'description'         => __('Tout tout tout'),
           'labels'              => $labels,
           // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-          'supports'            => array('title'),
+          'supports'            => array( 'title', 'editor', 'excerpt',  'thumbnail',  'revisions', 'custom-fields', ),
           /* 
              * Différentes options supplémentaires
              */
@@ -492,7 +501,7 @@ register_sidebar( array(
             'description'         => __('Tout tout tout'),
             'labels'              => $labels,
             // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-            'supports'            => array('title'),
+            'supports'            => array( 'title', 'editor', 'excerpt',  'thumbnail',  'revisions', 'custom-fields', ),
             /* 
                * Différentes options supplémentaires
                */
