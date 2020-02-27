@@ -1,10 +1,10 @@
 <?php 
-	if( is_single('article') ) { } // Teste si la page est de type single (lit article)
+	if( is_single('single') ) { } // Teste si la page est de type single (lit article)
 ?>
 
 <?php // detecte la page comme un template à activer ds wordpress
 /*
-  Template Name: article
+  Template Name: single
 */
 ?>
 
