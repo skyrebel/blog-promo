@@ -59,7 +59,7 @@
                             wp_nav_menu(array(
                                     'theme_location' => 'header',
                                     'div' => 'ul', 
-                                    'ul_class' => 'navbar-nav text-uppercase h2', 
+                                    'ul_class' => 'navbar-nav list-unstyled text-uppercase h2', 
                                     'li_class' => 'nav-item mx-5 px-5',
                                     'a_class' => 'black nav-link',
                                     'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
