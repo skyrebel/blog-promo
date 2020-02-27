@@ -1,26 +1,86 @@
 /*
 Theme Name: gitbreakers
-Theme URI: https://capitainewp.io
-Author: ACK_ATIM
+Theme URI: https://gitbreakerswp.io
+Author: SADKI Rayan, PEREIRA GOMES Fiona, SANTOS Sylvain, BACQUET Hugo.
 Author URI: https://dysign.fr
-Description: Mon premier thème !
+Description: Blog vintage/retro en bootstrap.
 Requires at least: WordPress 5.0
 Version: 1.0
 */
 
-
-.menu {
-    position: fixed;
-    top: 0px;
+/******************************* background ******************************************/
+.bg-brown{
+    background-color: #eccfad;
 }
-
-.admin-bar .menu {
-	top: 32px; /* on prend en compte le décalage */
+.bg-header{
+    background-image: url(assets/medias/bg-header.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+.bg-orange{
+    background-image: url(assets/medias/label-promo.png);
+    background-repeat: no-repeat;
+    background-position: top;
+}
+.bg-blue{
+    background-color: #159099;
+}
+.bg-main{
+    background-image: url(assets/medias/bg-main.png);
+}
+.bg-card-white{
+    background-color: #ffffff;
+    border-radius: 5%;
+}
+.bg-footer{
+    background-image: url(assets/medias/bg-footer.png);
+    background-color: #c4a177;
+}
+/******************************* font ******************************************/
+@import url('https://fonts.googleapis.com/css?family=Poppins:500&display=swap');
 
-/* body{
-
-    text-align: center;
-
-} */
+.old-press{
+    font-family: 'Old Press', sans-serif;
+}
+.poppins{
+    font-family: 'Poppins', sans-serif;
+}
+@font-face {
+    font-family: 'Old Press';
+    src: url('assets/fonts/old_press-webfont.woff2') format('woff2'),
+         url('assets/fonts/old_press-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/******************************* colors ******************************************/
+.black{
+    color: black;
+}
+/******************************* header ******************************************/
+.nav-link:hover{
+    color: white;
+    transition: 0.5s;
+}
+/******************************* a la une section ***************************************/
+.img-project{
+    border-radius: 50%;
+}
+/******************************* redac section ***************************************/
+.social-link > a{
+    text-decoration: none!important;
+    color: black;
+    background: linear-gradient(to bottom, #ea963f 0%, #ea963f 100%);
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 1px 1px;
+    transition: background-size .4s;
+}
+.social-link > a:hover{
+    background-size: 4px 50px;
+}
+/******************************* footer section ***************************************/
+.logo-footer{
+    width: 450px;
+    height: 145px;
+}
 
