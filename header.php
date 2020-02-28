@@ -3,6 +3,30 @@
   <head>
       <meta charset="<?php bloginfo( 'charset' ); ?>" > <!-- encodage du site -->
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Bienvenue sur le blog des gitbreakers ou vous pourrez retrouvez toutes les actualitées de la dernière promo en date.">
+    <meta name="author" content="Sylvain SANTOS, Rayan SADKI, Hugo BACQUET, Fiona PEREIRA GOMES">
+    <meta name="category" content="Blog">
+    <meta name="Keywords"
+        content="Blog, Actualités, Developpeur Web, Designer Web, OnlineFormaPro, Acces Code School, Retro">
+
+    <!-- Facebook -->
+
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="Blog des Gitbreakers">
+    <meta property="og:description" content="Bienvenue sur le blog des gitbreakers ou vous pourrez retrouvez toutes les actualitées de la dernière promo en date.">
+    <meta property="og:image" content="http://hugob.promo-vesoul33.codeur.online/gitbreakers/medias/logo.png">
+    <meta property="og:url" content="http://hugob.promo-vesoul33.codeur.online/gitbreakers/index.html">
+
+    <!-- Twitter -->
+
+    <meta name="twitter:title" content="Blog des Gitbreakers">
+    <meta name="twitter:description" content="Bienvenue sur le blog des gitbreakers ou vous pourrez retrouvez toutes les actualitées de la dernière promo en date.">
+    <meta name="twitter:image" content="http://hugob.promo-vesoul33.codeur.online/gitbreakers/medias/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="https://twitter.com/love">
 
 <html lang="fr-FR">
 

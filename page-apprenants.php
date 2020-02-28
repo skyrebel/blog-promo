@@ -11,7 +11,8 @@
 <?php get_header(); ?>
 
 <!--boucle: contrôle du contenu à afficher, affiche tt type de contenu, données de l'article à afficher ds la boucle ex the_title --> 
-
+<h1><?php the_title(); ?></h1>
+	<?php the_post_thumbnail(); ?>
 <?php
 
 // 1. on défini ce que l'on veut
@@ -37,6 +38,8 @@ echo get_post_meta($post->ID, '_apprenants_prenom', true).'<br>';
 echo get_post_meta($post->ID, '_apprenants_github', true).'<br>';
 echo get_post_meta($post->ID, '_apprenants_linkedIn', true).'<br>';
 echo get_post_meta($post->ID, '_apprenants_portfolio', true).'<br>';
+echo get_post_meta($post->ID, '_apprenants_avatar', true).'<br>';
+
 echo '</p>';  
 // Or like so:
 // $personnes = get_post_custom_values('personnes');
