@@ -20,7 +20,7 @@
 						// 1. on défini ce que l'on veut
 						$args = array(
 							'post_type' => 'projets',
-							'posts_per_page' => 2
+							'posts_per_page' => 3
 						);
 						// 2. on exécute la query
 						$projets_query = new WP_Query($args);
