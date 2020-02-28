@@ -18,7 +18,7 @@
     <meta property="og:title" content="Blog des Gitbreakers">
     <meta property="og:description" content="Bienvenue sur le blog des gitbreakers ou vous pourrez retrouvez toutes les actualitées de la dernière promo en date.">
     <meta property="og:image" content="http://hugob.promo-vesoul33.codeur.online/gitbreakers/medias/logo.png">
-    <meta property="og:url" content="http://hugob.promo-vesoul33.codeur.online/gitbreakers/index.html">
+    <meta property="og:url" content="http://hugob.promo-vesoul33.codeur.online/gitbreakers">
 
     <!-- Twitter -->
 
