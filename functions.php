@@ -211,30 +211,7 @@ function apprenants_build_meta_box($post)
 <?php
 }
 
-        // On peut définir ici d'autres options pour notre custom post type
-
-        $args = array(
-            'label'               => __('apprenants'),
-            'description'         => __('Tout tout tout'),
-            'labels'              => $labels,
-            // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-            'supports'            => array('title'),
-            /* 
-            * Différentes options supplémentaires
-            */
-            'show_in_rest' => true,
-            'hierarchical'        => false,
-            'public'              => true,
-            'has_archive'         => true,
-            'rewrite'             => array('slug' => 'apprenants'),
-
-        );
-
-        // On enregistre notre custom post type qu'on nomme ici avec ses arguments
-        register_post_type('apprenants', $args);
-    
-
-    add_action('init', 'wpm_custom_post_type_apprenants', 0);
+        
 
 
     /***************************************************************   Save Meta Box        ***************************************************************************/
@@ -488,7 +465,7 @@ function apprenants_build_meta_box($post)
     
             <h3><?php _e('image', 'article_example_plugin'); ?></h3>
             <p>
-                <input type="text" name="image" style="width: 30vw" value="<?php echo $image; ?>" />
+                <input type="name" name="image" style="width: 30vw" value="<?php echo $image; ?>" />
             </p>
             <h3><?php _e('contenu', 'article_example_plugin'); ?></h3>
             <p>

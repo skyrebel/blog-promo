@@ -59,7 +59,10 @@
 								// 2. on exécute la query
 								$article_query = new WP_Query($args);
 								// 3. on lance la boucle !
+								$i=0;
 								if ($article_query->have_posts()) : while ($article_query->have_posts()) : $article_query->the_post();
+									if($i%2==0){
+										
 								echo '<h4 class="playfair">';
 								the_title();
 								echo get_post_meta($post->ID, '_article_titre', true);
@@ -67,9 +70,24 @@
 								echo '<p>';
 								echo get_post_meta($post->ID, '_article_extrait', true);
 								echo '</p>';
-						echo '</div>';
-						echo '<div class="col-6 text-left">';
+								echo '</div>';
+								echo '<div class="col-12 text-left">';
 								echo get_post_meta($post->ID, '_article_image', true);
+								}
+								else{
+								echo '<div class="col-12 text-right">';
+								echo get_post_meta($post->ID, '_article_image', true);
+								echo '<h4 class="playfair">';
+								the_title();
+								echo get_post_meta($post->ID, '_article_titre', true);
+								echo '</h4>'; 
+								echo '<p>';
+								echo get_post_meta($post->ID, '_article_extrait', true);
+								echo '</p>';
+								echo '</div>';
+								}
+								$i++;
+								
 								endwhile;
 								endif;
 								// 4. On réinitialise à la requête principale (important)
@@ -101,3 +119,4 @@
 	</main>
 
 	<?php get_footer(); ?>
+
