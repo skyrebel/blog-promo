@@ -22,7 +22,7 @@
 						// 1. on défini ce que l'on veut
 						$args = array(
 							'post_type' => 'projets',
-							'posts_per_page' => 10
+							'posts_per_page' => 3
 						);
 						// 2. on exécute la query
 						$projets_query = new WP_Query($args);
@@ -90,7 +90,7 @@
 		<div class="container-fluid">
 			<div class="row py-5 my-5">
 				<div class="col-3 p-0">
-					<img src="<?php bloginfo('template_url'); ?>/assets/medias/hand.png" width="353" height="361" alt="doigt pointe carte"/>
+					<img src="<?php bloginfo('template_url'); ?>/assets/medias/hand.png" width="353" height="361" class="hand" alt="doigt pointe carte"/>
 				</div>
 				<div class="col-9">
 					<!-- Insérer la map Leaflet -->
