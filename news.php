@@ -1,10 +1,10 @@
 <?php 
-	if( is_page('projets') ) { } // Teste si la page est de type page 'projets'
+	if( is_page('articles') ) { } // Teste si la page est de type page 'article'
 ?>
 
 <?php // detecte la page comme un template à activer ds wordpress
 /*
-  Template Name: projets
+  Template Name: articles
 */
 ?>
 
@@ -16,15 +16,15 @@
 
 // 1. on défini ce que l'on veut
 $args = array(
-    'post_type' => 'projets',
-    'posts_per_page' => 2
+    'post_type' => 'article',
+    'posts_per_page' => 3
 );
 
 // 2. on exécute la query
-$projets_query = new WP_Query($args);
+$article_query = new WP_Query($args);
 
 // 3. on lance la boucle !
- if ($projets_query->have_posts()) : while ($projets_query->have_posts()) : $projets_query->the_post();
+ if ($article_query->have_posts()) : while ($article_query->have_posts()) : $article_query->the_post();
 // Echo some markup
 // echo 'bouibouibouiboui';
 // As with regular posts, you can use all normal display functions, such as
@@ -32,8 +32,10 @@ $projets_query = new WP_Query($args);
 // Within the loop, you can access custom fields like so:
 echo '<p>';
 the_title();
-echo get_post_meta($post->ID, '_projets_titre', true) .'<br>'; 
-echo get_post_meta($post->ID, '_projets_image', true).'<br>';
+echo get_post_meta($post->ID, '_article_titre', true) .'<br>'; 
+echo get_post_meta($post->ID, '_article_image', true).'<br>';
+echo get_post_meta($post->ID, '_article_contenu', true).'<br>';
+echo get_post_meta($post->ID, '_article_extrait', true).'<br>';
 echo '</p>';  
 // Or like so:
 // $personnes = get_post_custom_values('personnes');

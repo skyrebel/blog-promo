@@ -10,6 +10,14 @@
 
 <?php get_header(); ?>
 
+
+<?php
+/*
+Template Name: gitbreakers
+*/
+
+// Votre code ici
+?>
 <!--boucle: contrôle du contenu à afficher, affiche tt type de contenu, données de l'article à afficher ds la boucle ex the_title --> 
 <h1><?php the_title(); ?></h1>
 	<?php the_post_thumbnail(); ?>

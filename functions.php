@@ -1,6 +1,6 @@
 <?php
 
-        /******************************************** Activaton du thème et charger scripts et styles    ***************************************************************************/
+    /******************************************** Activaton du thème et charger scripts et styles    ***************************************************************************/
     function add_theme_scripts()
     {
         // boostrap
@@ -25,6 +25,24 @@
 
     // Ajouter automatiquement le titre du site dans l'en-tête du site
     add_theme_support('title-tag');
+    /***************************************************************     controleur img/logo     ***************************************************************************/
+    function wpc_customize_register($wp_customize) {
+        $wp_customize->add_section('wpc_logo_section', array(
+                'title'          => __('Logo', 'gitbreakers'),
+                'priority'       => 30,
+                'description'    => __('Upload a logo to replace the default site name and description in the header', 'gitbreakers')
+            )
+        );
+        $wp_customize->add_setting('wpc_logo');
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'wpc_logo', array(
+                'label'      => __('Logo', 'gitbreakers'),
+                'section'    => 'wpc_logo_section',
+                'settings'   => 'wpc_logo')
+            )
+        );
+    }
+    add_action('customize_register', 'wpc_customize_register');
+    /***************************************************************       widget header        ***************************************************************************/
 
     add_theme_support('custom-logo');
 
@@ -32,45 +50,34 @@
     function header_widgets_init()
     {
 
-        register_sidebar(array(
+    register_sidebar(array(
 
-            'name' => 'Ma nouvelle zone de widget',
-            'id' => 'new-widget-area',
-            'before_widget' => '<div class="nwa-widget">',
-            'after_widget' => '</div>',
-            'before_title' => '<h2 class="nwa-title">',
-            'after_title' => '</h2>',
-        ));
+    'name' => 'Ma nouvelle zone de widget',
+    'id' => 'widget-header',
+    'before_widget' => '<div class="col-1 offset-2 bg-orange">',
+    'after_widget' => '</div>',
+    'before_title' => '<p class="h1 my-4 text-center text-uppercase text-white old-press">',
+    'after_title' => '</p>',
+    ));
     }
 
     add_action('widgets_init', 'header_widgets_init');
+    /***************************************************************       Création du Menu        ***************************************************************************/
+    function wpbootstrap_after_setup_theme() {
+        // On ajoute un menu^G%le3@kwYE(oZfD!E
+        register_nav_menu('header_menu', "Menu du header");
+        // On ajoute une classe php permettant de gérer les menus Bootstrap
+        require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+    }
+    add_action('after_setup_theme', 'wpbootstrap_after_setup_theme');
 
+    register_nav_menus( array(
+        'header' => 'Menu Principal',
+    ) );
 
-        register_nav_menus( array(
-            'main' => 'Menu Principal',
-            'footer' => 'Bas de page',
-        ) );
+    /***************************************************************     PAGE  redac     ***************************************************************************/
 
-
-        /***************************************************************     Fin Création du Menu        ***************************************************************************/
-
-
-
-
-
-
-        /***************************************************************     PAGE  APPRENANT      ***************************************************************************/
-
-
-
-
-
-
-
-
-
-
-        /***************************************************************     Début Fonction  Post Type      ***************************************************************************/
+    /***************************************************************   Fonction  Post Type      ***************************************************************************/
     
     /*
    * On utilise une fonction pour créer notre custom post type 'Apprenants'
@@ -119,7 +126,7 @@ function wpm_custom_post_type_apprenants()
     );
 
     // On enregistre notre custom post type qu'on nomme ici avec ses arguments
-    register_post_type('apprenants', $args);
+    register_post_type('Apprenants', $args);
 }
 
 add_action('init', 'wpm_custom_post_type_apprenants', 0);
@@ -196,109 +203,99 @@ function apprenants_build_meta_box($post)
 <?php
 }
 
-        /***************************************************************      Fin Méta Box        ***************************************************************************/
+        // On peut définir ici d'autres options pour notre custom post type
+
+        $args = array(
+            'label'               => __('apprenants'),
+            'description'         => __('Tout tout tout'),
+            'labels'              => $labels,
+            // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
+            'supports'            => array('title'),
+            /* 
+            * Différentes options supplémentaires
+            */
+            'show_in_rest' => true,
+            'hierarchical'        => false,
+            'public'              => true,
+            'has_archive'         => true,
+            'rewrite'             => array('slug' => 'apprenants'),
+
+        );
+
+        // On enregistre notre custom post type qu'on nomme ici avec ses arguments
+        register_post_type('apprenants', $args);
+    
+
+    add_action('init', 'wpm_custom_post_type_apprenants', 0);
 
 
+    /***************************************************************   Save Meta Box        ***************************************************************************/
 
-        /***************************************************************       Début Save Meta Box        ***************************************************************************/
+    /**
+     * Store custom field meta box data
+     *
+     * @param int $post_id The post ID.
+     * @link https://codex.wordpress.org/Plugin_API/Action_Reference/save_post
+     */
 
-/**
- * Store custom field meta box data
- *
- * @param int $post_id The post ID.
- * @link https://codex.wordpress.org/Plugin_API/Action_Reference/save_post
- */
+    function apprenants_save_meta_box_data($post_id)
+    {
+        // verify taxonomies meta box nonce
+        if (!isset($_POST['apprenants_meta_box_nonce']) || !wp_verify_nonce($_POST['apprenants_meta_box_nonce'], basename(__FILE__))) {
+            return;
+        }
 
-function apprenants_save_meta_box_data($post_id)
-{
-    // verify taxonomies meta box nonce
-    if (!isset($_POST['apprenants_meta_box_nonce']) || !wp_verify_nonce($_POST['apprenants_meta_box_nonce'], basename(__FILE__))) {
-        return;
-    }
+        // return if autosave
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+            return;
+        }
 
-    // return if autosave
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
-
-    // Check the user's permissions.
-    if (!current_user_can('edit_post', $post_id)) {
-        return;
-    }
-
-    // store custom fields values
-    // nom string
-    if (isset($_REQUEST['nom'])) {
-        update_post_meta($post_id, '_apprenants_nom', sanitize_text_field($_POST['nom']));
-    }
-
-    // store custom fields values
-    // prénom string
-    if (isset($_REQUEST['prenom'])) {
-        update_post_meta($post_id, '_apprenants_prenom', sanitize_text_field($_POST['prenom']));
-    }
-
-    // store custom fields values
-    // github string
-    if (isset($_REQUEST['github'])) {
-        update_post_meta($post_id, '_apprenants_github', sanitize_text_field($_POST['github']));
-    }
-
-    // store custom fields values
-    //linkedIn string
-    if (isset($_REQUEST['linkedIn'])) {
-        update_post_meta($post_id, '_apprenants_linkedIn', sanitize_text_field($_POST['linkedIn']));
-    }
-
-      // store custom fields values
-    //portfolio string
-    if (isset($_REQUEST['portfolio'])) {
-        update_post_meta($post_id, '_apprenants_portfolio', sanitize_text_field($_POST['portfolio']));
-    }
+        // Check the user's permissions.
+        if (!current_user_can('edit_post', $post_id)) {
+            return;
+        }
 
         // store custom fields values
-    //avatar string
-    if (isset($_REQUEST['avatar'])) {
-        update_post_meta($post_id, '_apprenants_avatar', sanitize_text_field($_POST['avatar']));
+        // nom string
+        if (isset($_REQUEST['nom'])) {
+            update_post_meta($post_id, '_apprenants_nom', sanitize_text_field($_POST['nom']));
+        }
+
+        // store custom fields values
+        // prénom string
+        if (isset($_REQUEST['prenom'])) {
+            update_post_meta($post_id, '_apprenants_prenom', sanitize_text_field($_POST['prenom']));
+        }
+
+        // store custom fields values
+        // github string
+        if (isset($_REQUEST['github'])) {
+            update_post_meta($post_id, '_apprenants_github', sanitize_text_field($_POST['github']));
+        }
+
+        // store custom fields values
+        //linkedIn string
+        if (isset($_REQUEST['linkedIn'])) {
+            update_post_meta($post_id, '_apprenants_linkedIn', sanitize_text_field($_POST['linkedIn']));
+        }
+
+        // store custom fields values
+        //portfolio string
+        if (isset($_REQUEST['portfolio'])) {
+            update_post_meta($post_id, '_apprenants_portfolio', sanitize_text_field($_POST['portfolio']));
+        }
     }
+    add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
 
 
 
-}
-add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
+    /***************************************************************     PAGE  PROJETS      ***************************************************************************/
 
 
-function apprenants_post_thumbnails() {
-		
-    add_theme_support( 'custom-background' );
-    add_theme_support( 'custom-logo' );
-    add_theme_support( 'post-thumbnails' );
-}
-add_action( 'after_setup_theme', 'apprenants_post_thumbnails' );
-
-
-/***************************************************************      Fin Save Meta Box        ***************************************************************************/
-
-
-
-
-
-/***************************************************************    FIN  PAGE  APPRENANT      ***************************************************************************/
-
-
-
-
-/***************************************************************     PAGE  PROJETS      ***************************************************************************/
-
-
-
-
- /***************************************************************     Début Fonction  Post Type      ***************************************************************************/
-
-
+    /***************************************************************    Post Type      ***************************************************************************/
     
     /*
-   * On utilise une fonction pour créer notre custom post type 'Apprenants'
+   * On utilise une fonction pour créer notre custom post type 'Projets'
    */
 
   function wpm_custom_post_type_projets()
@@ -400,73 +397,62 @@ add_action( 'after_setup_theme', 'apprenants_post_thumbnails' );
   
   
   
-          /***************************************************************       Début Save Meta Box        ***************************************************************************/
+        
   
-  /**
-   * Store custom field meta box data
-   *
-   * @param int $post_id The post ID.
-   * @link https://codex.wordpress.org/Plugin_API/Action_Reference/save_post
-   */
   
-  function projets_save_meta_box_data($post_id)
-  {
-      // verify taxonomies meta box nonce
-      if (!isset($_POST['projets_meta_box_nonce']) || !wp_verify_nonce($_POST['projets_meta_box_nonce'], basename(__FILE__))) {
-          return;
-      }
-  
-      // return if autosave
-      if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-          return;
-      }
-  
-      // Check the user's permissions.
-      if (!current_user_can('edit_post', $post_id)) {
-          return;
-      }
-  
-      // store custom fields values
-      // nom string
-      if (isset($_REQUEST['titre'])) {
-          update_post_meta($post_id, '_projets_titre', sanitize_text_field($_POST['titre']));
-      }
-  
-      // store custom fields values
-      // image string
-      if (isset($_REQUEST['image'])) {
-          update_post_meta($post_id, '_projets_image', sanitize_text_field($_POST['image']));
-      }
-  }
-  add_action('save_post_projets', 'projets_save_meta_box_data');
 
+    /***************************************************************  Save Meta Box        ***************************************************************************/
+  
+    /**
+     * Store custom field meta box data
+     *
+     * @param int $post_id The post ID.
+     * @link https://codex.wordpress.org/Plugin_API/Action_Reference/save_post
+     */
+    
+    function projets_save_meta_box_data($post_id)
+    {
+        // verify taxonomies meta box nonce
+        if (!isset($_POST['projets_meta_box_nonce']) || !wp_verify_nonce($_POST['projets_meta_box_nonce'], basename(__FILE__))) {
+            return;
+        }
+    
+        // return if autosave
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+            return;
+        }
+    
+        // Check the user's permissions.
+        if (!current_user_can('edit_post', $post_id)) {
+            return;
+        }
+    
+        // store custom fields values
+        // nom string
+        if (isset($_REQUEST['titre'])) {
+            update_post_meta($post_id, '_projets_titre', sanitize_text_field($_POST['titre']));
+        }
+    
+        // store custom fields values
+        // image string
+        if (isset($_REQUEST['image'])) {
+            update_post_meta($post_id, '_projets_image', sanitize_text_field($_POST['image']));
+        }
+    }
+    add_action('save_post_projets', 'projets_save_meta_box_data');
 
 
   /************************************************************     déclaration d'une sidebar   ******************************************************************/
 
+    register_sidebar( array(
+        'id' => 'blog-sidebar',
+        'name' => 'gitbreakers',
+    ) );
 
-register_sidebar( array(
-	'id' => 'blog-sidebar',
-	'name' => 'gitbreakers',
-) );
-
-
-
-
-/***************************************************************    FIN  PAGE PROJETS    ***************************************************************************/
-
-
-  
-  
   /***************************************************************     PAGE  ARTICLE     ***************************************************************************/
   
-  
-  
-  
-   /***************************************************************     Début Fonction  Post Type      ***************************************************************************/
-  
-  
-      
+   /*************************************************************** Fonction  Post Type      ***************************************************************************/
+    
       /*
      * On utilise une fonction pour créer notre custom post type 'Apprenants'
      */
@@ -519,13 +505,11 @@ register_sidebar( array(
     
     add_action('init', 'wpm_custom_post_type_article', 0);
     
+   
+    /***************************************************************     Fonction Post Type        ***************************************************************************/
     
-    
-        /***************************************************************       Fin Fonction Post Type        ***************************************************************************/
-    
-    
-    
-        /***************************************************************      Debut Méta Box        ***************************************************************************/
+      
+    /***************************************************************       Méta Box        ***************************************************************************/
     
     /**
      * Add meta box
@@ -576,11 +560,9 @@ register_sidebar( array(
     <?php
     }
     
-            /***************************************************************      Fin Méta Box        ***************************************************************************/
+    /***************************************************************      Méta Box        ***************************************************************************/
     
-    
-    
-            /***************************************************************       Début Save Meta Box        ***************************************************************************/
+    /***************************************************************    Save Meta Box        ***************************************************************************/
     
     /**
      * Store custom field meta box data
@@ -637,3 +619,10 @@ register_sidebar( array(
   
   /***************************************************************    FIN  PAGE ARTICLE    ***************************************************************************/
 
+
+  
+  function bpc_autolink_featured_images( $html, $post_id, $post_image_id ) {
+    $html = '<a href="' . get_permalink( $post_id ) . '" title="' . esc_attr( get_the_title( $post_id ) ) . '">' . $html . '</a>';
+    return $html;
+    }
+    add_filter( 'post_thumbnail_html', 'bpc_autolink_featured_images', 10, 3 );
