@@ -49,7 +49,7 @@
 						<img src="<?php bloginfo('template_url'); ?>/assets/medias/dernieres-depeches.png" class="my-5 img-fluid" width="260" height="172" alt="dernières dépêches"/>
 					</h3>
                     <div class="row mt-5 pt-5">
-                        <div class="col-6 align-self-center text-right poppins">					
+                        <!-- <div class="col-6 align-self-center text-right poppins">					 -->
 							<?php
 								// 1. on défini ce que l'on veut
 								$args = array(
@@ -61,8 +61,11 @@
 								// 3. on lance la boucle !
 								$i=0;
 								if ($article_query->have_posts()) : while ($article_query->have_posts()) : $article_query->the_post();
-									if($i%2==0){
-										
+									if($i==0){
+								echo '<div class="col-6 text-right  pb-5">';
+								echo the_post_thumbnail( 'medium' ); 
+								echo '</div>';
+								echo '<div class="col-6 text-right">';
 								echo '<h4 class="playfair">';
 								the_title();
 								echo get_post_meta($post->ID, '_article_titre', true);
@@ -71,12 +74,11 @@
 								echo get_post_meta($post->ID, '_article_extrait', true);
 								echo '</p>';
 								echo '</div>';
-								echo '<div class="col-12 text-left">';
-								echo get_post_meta($post->ID, '_article_image', true);
+							
+								$i=1;
 								}
 								else{
-								echo '<div class="col-12 text-right">';
-								echo get_post_meta($post->ID, '_article_image', true);
+								echo '<div class="col-6 text-right">';		
 								echo '<h4 class="playfair">';
 								the_title();
 								echo get_post_meta($post->ID, '_article_titre', true);
@@ -85,8 +87,12 @@
 								echo get_post_meta($post->ID, '_article_extrait', true);
 								echo '</p>';
 								echo '</div>';
+								echo '<div class="col-6 text-left d-flex justify-content-end pb-5">';
+								echo the_post_thumbnail( 'medium' ); 
+								echo '</div>';
+								$i=0;
 								}
-								$i++;
+						
 								
 								endwhile;
 								endif;
@@ -119,4 +125,3 @@
 	</main>
 
 	<?php get_footer(); ?>
-

@@ -11,6 +11,7 @@ Version: 1.0
 /******************************* background ******************************************/
 .bg-brown{
     background-color: #eccfad;
+<<<<<<< HEAD
 
 }
 .bg-header{
@@ -57,6 +58,9 @@ Version: 1.0
 
 
 
+=======
+}
+>>>>>>> f4a568ac697bb415f46067a8fdc7ebcea5a42658
 .bg-header{
     background-image: url(assets/medias/bg-header.png);
     background-repeat: no-repeat;
@@ -168,6 +172,9 @@ a{
     width: 450px;
     height: 145px;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f4a568ac697bb415f46067a8fdc7ebcea5a42658
 
