@@ -22,11 +22,7 @@
 						// 1. on défini ce que l'on veut
 						$args = array(
 							'post_type' => 'projets',
-<<<<<<< HEAD
-							'posts_per_page' => 3
-=======
-							'posts_per_page' => 4
->>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
+							'posts_per_page' => 10
 						);
 						// 2. on exécute la query
 						$projets_query = new WP_Query($args);

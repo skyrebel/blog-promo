@@ -10,17 +10,6 @@
 
   <?php get_header(); ?>
 
-<<<<<<< HEAD
-
-<?php
-/*
-Template Name: gitbreakers
-*/
-
-// Votre code ici
-?>
-<!--boucle: contrôle du contenu à afficher, affiche tt type de contenu, données de l'article à afficher ds la boucle ex the_title --> 
-=======
     <main>
       <!-- redac section -->
       <div class="container-fluid mt-5">
@@ -104,6 +93,5 @@ Template Name: gitbreakers
           </div>
       </div>
     </main>
->>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
 
   <?php get_footer(); ?>

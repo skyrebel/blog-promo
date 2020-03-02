@@ -39,18 +39,8 @@
        add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
     /***************************************************************       widget header        ***************************************************************************/
 
-<<<<<<< HEAD
-    add_theme_support('custom-logo');
-
-        /***************************************************************       Création du Menu        ***************************************************************************/
-    function header_widgets_init()
-    {
-
-    register_sidebar(array(
-=======
     function header_widgets_init(){
         register_sidebar(array(
->>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
 
         'name' => 'promo-widget',
         'id' => 'promo-widget',
@@ -266,29 +256,11 @@ function apprenants_build_meta_box($post)
             return;
         }
 
-<<<<<<< HEAD
-   
-
-
-}
-add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
-
-
-/***************************************************************      Fin Save Meta Box        ***************************************************************************/
-
-
-
-
-
-/***************************************************************    FIN  PAGE  APPRENANT      ***************************************************************************/
-
-=======
         // store custom fields values
         // nom string
         if (isset($_REQUEST['nom'])) {
             update_post_meta($post_id, '_apprenants_nom', sanitize_text_field($_POST['nom']));
         }
->>>>>>> 61f544cb07b456695edc92bccc29388b8dcf4f7b
 
         // store custom fields values
         // prénom string
@@ -316,13 +288,7 @@ add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
     }
     add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
 
-<<<<<<< HEAD
-
-
-    /***************************************************************     PAGE  PROJETS      ***************************************************************************/
-=======
     /***************************************************************    PROJETS      ***************************************************************************/
->>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
 
 
     /***************************************************************    Post Type      ***************************************************************************/
@@ -331,109 +297,6 @@ add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
    * On utilise une fonction pour créer notre custom post type 'Projets'
    */
 
-<<<<<<< HEAD
-  function wpm_custom_post_type_projets()
-  {
-  
-      // On rentre les différentes dénominations de notre custom post type qui seront affichées dans l'administration
-      $labels = array(
-          // Le nom au pluriel
-          'name'                => _x('projets', 'Post Type General Name'),
-          // Le nom au singulier
-          'singular_name'       => _x('projet', 'Post Type Singular Name'),
-          // Le libellé affiché dans le menu
-          'menu_name'           => __('projets'),
-          // Les différents libellés de l'administration
-          'all_items'           => __('Tous les projets'),
-          'view_item'           => __('Voir les projets'),
-          'add_new_item'        => __('Ajouter un nouveau projet'),
-          'add_new'             => __('Ajouter'),
-          'edit_item'           => __('Editer un projet'),
-          'update_item'         => __('Modifier un projet'),
-          'search_items'        => __('Rechercher un projet'),
-          'not_found'           => __('Projet non trouvée'),
-          'not_found_in_trash'  => __('Non trouvée dans la corbeille'),
-      );
-  
-      // On peut définir ici d'autres options pour notre custom post type
-  
-      $args = array(
-          'label'               => __('projets'),
-          'description'         => __('Projets Réalisés'),
-          'labels'              => $labels,
-          // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-          'supports'            => array( 'title', 'editor', 'excerpt',  'thumbnail',  'revisions', 'custom-fields', ),
-          /* 
-             * Différentes options supplémentaires
-             */
-          'show_in_rest' => true,
-          'hierarchical'        => false,
-          'public'              => true,
-          'has_archive'         => true,
-          'rewrite'             => array('slug' => 'projets'),
-  
-      );
-  
-      // On enregistre notre custom post type qu'on nomme ici avec ses arguments
-      register_post_type('projets', $args);
-  }
-  
-  add_action('init', 'wpm_custom_post_type_projets', 0);
-  
-  
-  
-      /***************************************************************       Fin Fonction Post Type        ***************************************************************************/
-  
-  
-  
-      /***************************************************************      Debut Méta Box        ***************************************************************************/
-  
-  /**
-   * Add meta box
-   *
-   * @param post $post The post object
-   * @link https://codex.wordpress.org/Plugin_API/Action_Reference/add_meta_boxes
-   */
-  function projets_add_meta_boxes($post)
-  {
-      add_meta_box('projets_meta_box', __('projets', 'projets_example_plugin'), 'projets_build_meta_box', 'projets', 'normal', 'low');
-  }
-  add_action('add_meta_boxes_projets', 'projets_add_meta_boxes');
-  
-  function projets_build_meta_box($post)
-  {
-      // make sure the form request comes from WordPress
-      wp_nonce_field(basename(__FILE__), 'projets_meta_box_nonce');
-  
-      // retrieve the _personnes_nom current value
-      // $current_nom = get_post_meta($post->ID, '_personnes_nom', true);
-  
-      // retrieve the _personnes_age current value
-      $titre = get_post_meta($post->ID, '_projets_titre', true);
-      $image = get_post_meta($post->ID, '_projets_image', true);
-  
-  ?>
-      <div class='inside'>
-          <h3><?php _e('titre', 'projets_example_plugin'); ?></h3>
-          <p>
-              <input type="text" name="titre" style="width: 30vw" value="<?php echo $titre; ?>" />
-          </p>
-  
-          <h3><?php _e('image', 'projets_example_plugin'); ?></h3>
-          <p>
-              <input type="text" name="image" style="width: 30vw" value="<?php echo $image; ?>" />
-          </p>
-      </div>
-  <?php
-  }
-  
-          /***************************************************************      Fin Méta Box        ***************************************************************************/
-  
-  
-  
-        
-  
-=======
     function wpm_custom_post_type_projets()
     {
     
@@ -483,7 +346,6 @@ add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
     add_action('init', 'wpm_custom_post_type_projets', 0);
     
     /***************************************************************     Méta Box        ***************************************************************************/
->>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
   
 
     /***************************************************************  Save Meta Box        ***************************************************************************/
