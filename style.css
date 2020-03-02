@@ -11,56 +11,7 @@ Version: 1.0
 /******************************* background ******************************************/
 .bg-brown{
     background-color: #eccfad;
-<<<<<<< HEAD
-
 }
-.bg-header{
-    background-image: url(../medias/bg-header.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.bg-orange{
-    background-image: url(../medias/label-promo.png);
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: 60%;
-}
-.bg-blue{
-    background-color: #159099;
-}
-.bg-card-white{
-    background-color: #ffffff;
-    border-radius: 5%;
-}
-/******************************* font ******************************************/
-@import url('https://fonts.googleapis.com/css?family=Poppins:500&display=swap');
-
-.poppins{
-    font-family: 'Poppins' ;
-}
-
-/******************************* colors ******************************************/
-.black{
-    color: black;
-}
-/******************************* header ******************************************/
-
-/******************************* redac section ***************************************/
-.social-link > a:hover{
-    text-decoration: none!important;
-    color: black;
-    border-bottom: 2px solid black;
-    bottom: -2px;
-    transition: width .1s;
-    width: 100%;
-}
-
-
-
-
-=======
-}
->>>>>>> f4a568ac697bb415f46067a8fdc7ebcea5a42658
 .bg-header{
     background-image: url(assets/medias/bg-header.png);
     background-repeat: no-repeat;
@@ -138,11 +89,23 @@ a{
 }
 /******************************* a la une section ***************************************/
 .img-project{
-    border-radius: 50%;
+    border-radius: 50% !important;
 }
 .filter{
     filter: sepia(60%);
 }
+
+/******************************* projet section ***************************************/
+
+.img-projet{
+    overflow:hidden !important;
+    -webkit-border-radius:50px !important;
+    -moz-border-radius:50px !important;
+    border-radius:50px !important;
+}
+
+
+
 /******************************* redac section ***************************************/
 .social-link > a{
     text-decoration: none!important;
@@ -172,9 +135,6 @@ a{
     width: 450px;
     height: 145px;
 }
-<<<<<<< HEAD
 
 
-=======
->>>>>>> f4a568ac697bb415f46067a8fdc7ebcea5a42658
 

@@ -1,7 +1,7 @@
 	<?php 
 		if( is_front_page('home') ) { } // Teste si la page est de type home
 	?>
-
+	<link rel="stylesheet" href="style.css">
 	<?php // detecte la page comme un template à activer ds wordpress
 	/*
 	Template Name: home
@@ -32,9 +32,11 @@
 						the_title();
 						echo get_post_meta($post->ID, '_projets_titre', true) .'<br>';
 						echo '</h4>'; 
-						echo '<a class="mt-5 img-project img-fluid" alt="photo projet">'; 
-						echo get_post_meta($post->ID, '_projets_image', true).'<br>';
-						echo '</a>';  
+						echo '<p class="img-project>';
+						echo '<a class="mt-5 img-project img-fluid img-projet" alt="photo projet">'; 
+						echo the_post_thumbnail( 'thumbnail' );
+						echo '</a>';
+						echo '</p>';  
 						endwhile;
 						endif;
 						// 4. On réinitialise à la requête principale (important)
