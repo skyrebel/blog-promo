@@ -26,24 +26,20 @@
     // Ajouter automatiquement le titre du site dans l'en-tête du site
     add_theme_support('title-tag');
     /***************************************************************     controleur img/logo     ***************************************************************************/
-    function wpc_customize_register($wp_customize) {
-        $wp_customize->add_section('wpc_logo_section', array(
-                'title'          => __('Logo', 'gitbreakers'),
-                'priority'       => 30,
-                'description'    => __('Upload a logo to replace the default site name and description in the header', 'gitbreakers')
-            )
+    function themename_custom_logo_setup() {
+        $defaults = array(
+        'height'      => 100,
+        'width'       => 400,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => array( 'site-title', 'site-description' ),
         );
-        $wp_customize->add_setting('wpc_logo');
-        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'wpc_logo', array(
-                'label'      => __('Logo', 'gitbreakers'),
-                'section'    => 'wpc_logo_section',
-                'settings'   => 'wpc_logo')
-            )
-        );
+        add_theme_support( 'custom-logo', $defaults );
     }
-    add_action('customize_register', 'wpc_customize_register');
+       add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
     /***************************************************************       widget header        ***************************************************************************/
 
+<<<<<<< HEAD
     add_theme_support('custom-logo');
 
         /***************************************************************       Création du Menu        ***************************************************************************/
@@ -51,17 +47,34 @@
     {
 
     register_sidebar(array(
+=======
+    function header_widgets_init(){
+        register_sidebar(array(
+>>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
 
-    'name' => 'Ma nouvelle zone de widget',
-    'id' => 'widget-header',
-    'before_widget' => '<div class="col-1 offset-2 bg-orange">',
-    'after_widget' => '</div>',
-    'before_title' => '<p class="h1 my-4 text-center text-uppercase text-white old-press">',
-    'after_title' => '</p>',
-    ));
+        'name' => 'promo-widget',
+        'id' => 'promo-widget',
+        'before_widget' => '<div class="col-1 offset-2 bg-orange">',
+        'after_widget' => '</div>',
+        'before_title' => '<p class="h1 my-4 text-center text-uppercase text-white old-press">',
+        'after_title' => '</p>',
+        ));
     }
 
     add_action('widgets_init', 'header_widgets_init');
+    /***************************************************************       widget map       ***************************************************************************/
+
+        function front_page_widgets_init(){
+            register_sidebar(array(
+    
+            'name' => 'map-widget',
+            'id' => 'map-widget',
+            'before_widget' => '<div class="col-9 filter>',
+            'after_widget' => '</div>',
+            ));
+        }
+    
+        add_action('widgets_init', 'front_page_widgets_init');
     /***************************************************************       Création du Menu        ***************************************************************************/
     function wpbootstrap_after_setup_theme() {
         // On ajoute un menu^G%le3@kwYE(oZfD!E
@@ -287,9 +300,13 @@ function apprenants_build_meta_box($post)
     }
     add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
 
+<<<<<<< HEAD
 
 
     /***************************************************************     PAGE  PROJETS      ***************************************************************************/
+=======
+    /***************************************************************    PROJETS      ***************************************************************************/
+>>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
 
 
     /***************************************************************    Post Type      ***************************************************************************/
@@ -298,6 +315,7 @@ function apprenants_build_meta_box($post)
    * On utilise une fonction pour créer notre custom post type 'Projets'
    */
 
+<<<<<<< HEAD
   function wpm_custom_post_type_projets()
   {
   
@@ -399,6 +417,57 @@ function apprenants_build_meta_box($post)
   
         
   
+=======
+    function wpm_custom_post_type_projets()
+    {
+    
+        // On rentre les différentes dénominations de notre custom post type qui seront affichées dans l'administration
+        $labels = array(
+            // Le nom au pluriel
+            'name'                => _x('projets', 'Post Type General Name'),
+            // Le nom au singulier
+            'singular_name'       => _x('projet', 'Post Type Singular Name'),
+            // Le libellé affiché dans le menu
+            'menu_name'           => __('projets'),
+            // Les différents libellés de l'administration
+            'all_items'           => __('Tous les projets'),
+            'view_item'           => __('Voir les projets'),
+            'add_new_item'        => __('Ajouter un nouveau projet'),
+            'add_new'             => __('Ajouter'),
+            'edit_item'           => __('Editer un profil'),
+            'update_item'         => __('Modifier un profil'),
+            'search_items'        => __('Rechercher un projet'),
+            'not_found'           => __('Introuvable'),
+            'not_found_in_trash'  => __('Non trouvé dans la corbeille'),
+        );
+    
+        // On peut définir ici d'autres options pour notre custom post type
+    
+        $args = array(
+            'label'               => __('projets'),
+            'description'         => __('Tout tout tout'),
+            'labels'              => $labels,
+            // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
+            'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', ),
+            /* 
+                * Différentes options supplémentaires
+                */
+            'show_in_rest' => true,
+            'hierarchical'        => false,
+            'public'              => true,
+            'has_archive'         => true,
+            'rewrite'             => array('slug' => 'projets'),
+    
+        );
+    
+        // On enregistre notre custom post type qu'on nomme ici avec ses arguments
+        register_post_type('projets', $args);
+    }
+    
+    add_action('init', 'wpm_custom_post_type_projets', 0);
+    
+    /***************************************************************     Méta Box        ***************************************************************************/
+>>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
   
 
     /***************************************************************  Save Meta Box        ***************************************************************************/
@@ -440,14 +509,6 @@ function apprenants_build_meta_box($post)
         }
     }
     add_action('save_post_projets', 'projets_save_meta_box_data');
-
-
-  /************************************************************     déclaration d'une sidebar   ******************************************************************/
-
-    register_sidebar( array(
-        'id' => 'blog-sidebar',
-        'name' => 'gitbreakers',
-    ) );
 
   /***************************************************************     PAGE  ARTICLE     ***************************************************************************/
   
@@ -504,10 +565,6 @@ function apprenants_build_meta_box($post)
     }
     
     add_action('init', 'wpm_custom_post_type_article', 0);
-    
-   
-    /***************************************************************     Fonction Post Type        ***************************************************************************/
-    
       
     /***************************************************************       Méta Box        ***************************************************************************/
     
@@ -559,9 +616,7 @@ function apprenants_build_meta_box($post)
         </div>
     <?php
     }
-    
-    /***************************************************************      Méta Box        ***************************************************************************/
-    
+  
     /***************************************************************    Save Meta Box        ***************************************************************************/
     
     /**
