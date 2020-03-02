@@ -39,17 +39,17 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-7 text-center">
-                <!-- logo du site -->
-                <h1>
+              <!-- logo du site -->
+              <h1>
                 <?php
-		              $custom_logo_id = get_theme_mod('custom_logo');
-		              $image = wp_get_attachment_image_src($custom_logo_id , 'full');
+		              if ( function_exists( 'the_custom_logo' ) ) {
+                      the_custom_logo();
+                  }
 	              ?>
-                  <img src="<?php echo $image[0]; ?>" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" class="img-fluid pb-5 margin-logo mt-4" alt="logo" width="736" height="101">
-                </h1>                   
+              </h1>                   
             </div>
             <!-- widget header PROMO -->
-            <?php dynamic_sidebar( 'widget-header' ); ?>
+            <?php dynamic_sidebar( 'promo-widget' ); ?>
         </div>
       </div> 
       <!-- menu -->
@@ -63,14 +63,14 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                           <?php
                             wp_nav_menu(array(
-                                    'theme_location' => 'header',
-                                    'div' => 'ul', 
-                                    'ul_class' => 'navbar-nav list-unstyled text-uppercase h2', 
-                                    'li_class' => 'nav-item mx-5 px-5',
-                                    'a_class' => 'black nav-link',
-                                    'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
-                                    'walker' => new wp_bootstrap_navwalker())
-                            );
+                              'theme_location' => 'header',
+                              'container'       => 'div',
+                              'container_class' => 'collapse navbar-collapse',
+                              'container_id'    => 'bs-example-navbar-collapse-1',
+                              'menu_class'      => 'navbar-nav mr-auto',
+                              'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+                              'walker'          => new WP_Bootstrap_Navwalker(),
+                            ));
                           ?>
                         </div>
                     </nav>
