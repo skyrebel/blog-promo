@@ -14,11 +14,12 @@ Version: 1.0
 }
 .bg-header{
     background-image: url(assets/medias/bg-header.png);
+
     background-repeat: no-repeat;
     background-size: cover;
 }
 .bg-orange{
-    background-image: url(assets/medias/label-promo.png);
+    /* background-image: url(assets/medias/label-promo1.png); */
     background-repeat: no-repeat;
     background-position: top;
 }

@@ -345,8 +345,49 @@ function apprenants_build_meta_box($post)
     
     add_action('init', 'wpm_custom_post_type_projets', 0);
     
-    /***************************************************************     Méta Box        ***************************************************************************/
+    
   
+ /***************************************************************     Méta Box        ***************************************************************************/
+  
+    /**
+     * Add meta box
+     *
+     * @param post $post The post object
+     * @link https://codex.wordpress.org/Plugin_API/Action_Reference/add_meta_boxes
+     */
+    function projets_add_meta_boxes($post)
+    {
+        add_meta_box('projets_meta_box', __('projets', 'projets_example_plugin'), 'projets_build_meta_box', 'projets', 'normal', 'low');
+    }
+    add_action('add_meta_boxes_projets', 'projets_add_meta_boxes');
+    
+    function projets_build_meta_box($post)
+    {
+        // make sure the form request comes from WordPress
+        wp_nonce_field(basename(__FILE__), 'projets_meta_box_nonce');
+    
+        // retrieve the _personnes_nom current value
+        // $current_nom = get_post_meta($post->ID, '_personnes_nom', true);
+    
+        // retrieve the _personnes_age current value
+        $titre = get_post_meta($post->ID, '_projets_titre', true);
+        $image = get_post_meta($post->ID, '_projets_image', true);
+    
+    ?>
+        <div class='inside'>
+            <h3><?php _e('titre', 'projets_example_plugin'); ?></h3>
+            <p>
+                <input type="text" name="titre" style="width: 30vw" value="<?php echo $titre; ?>" />
+            </p>
+    
+            <h3><?php _e('image', 'projets_example_plugin'); ?></h3>
+            <p>
+                <input type="text" name="image" style="width: 30vw" value="<?php echo $image; ?>" />
+            </p>
+        </div>
+    <?php
+    }
+
 
     /***************************************************************  Save Meta Box        ***************************************************************************/
   
