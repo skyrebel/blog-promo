@@ -17,11 +17,11 @@ Version: 1.0
     background-repeat: no-repeat;
     background-size: cover;
 }
-.bg-orange{
-    background-image: url(assets/medias/label-promo.png);
+/* .bg-orange{
+    background-image: url(assets/medias/label-promo1.png);
     background-repeat: no-repeat;
     background-position: top;
-}
+} */
 .bg-blue{
     background-color: #159099;
 }
@@ -124,3 +124,39 @@ a{
     height: 145px;
 }
 
+/******************************* Media queries **************************************/
+
+
+ /* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) { 
+    .label{
+        display: none !important;
+    }
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 768px) { 
+    .label{
+        display: none !important;
+          }
+
+    .img-fluid{
+        text-align: center !important;
+          }
+ }
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) { 
+    .label{
+    display: flex;
+    width: 100px !important;
+    height: 120px !important;
+} }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+    .label{
+        width: 150px;
+        height: 180px;
+    }
+ }

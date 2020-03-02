@@ -31,9 +31,10 @@
     <!-- header section -->
     <header class="site__header bg-header">
       <div class="container-fluid">
-        <div class="row">
-            <div class="col-7 text-center">
-              <!-- logo du site -->
+        <div class="row ">
+            <div class="col-10 text-center">
+           
+              <!-- logo du site -->               
               <h1>
                 <?php
 		              if ( function_exists( 'the_custom_logo' ) ) {
@@ -43,7 +44,9 @@
               </h1>                   
             </div>
             <!-- widget header PROMO -->
+
             <?php dynamic_sidebar( 'promo-widget' ); ?>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/medias/label-promo1.png" class="label" width="150px" height="180px" alt="label">
         </div>
       </div> 
       <!-- menu -->
