@@ -27,10 +27,16 @@ Version: 1.0
 }
 .bg-main{
     background-image: url(assets/medias/bg-main.png);
+    background-repeat: no-repeat;
 }
 .bg-card-white{
     background-color: #ffffff;
     border-radius: 5%;
+}
+.bg-main-news{
+    background-image: url(medias/bg-main-news.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .bg-footer{
     background-image: url(assets/medias/bg-footer.png);
@@ -52,11 +58,31 @@ Version: 1.0
     font-weight: normal;
     font-style: normal;
 }
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
+.playfair{
+    font-family: 'Playfair Display', sans-serif ;
+}
 /******************************* colors ******************************************/
 .black{
     color: black;
 }
 /******************************* header ******************************************/
+h1 > a > img{
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+    max-width:100%;
+    height:auto;
+}
+li{
+    margin: 0rem 3rem;
+    padding: 0 3rem;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+a{
+    color: black;
+}
 .nav-link:hover{
     color: white;
     transition: 0.5s;
@@ -64,6 +90,9 @@ Version: 1.0
 /******************************* a la une section ***************************************/
 .img-project{
     border-radius: 50%;
+}
+.filter{
+    filter: sepia(60%);
 }
 /******************************* redac section ***************************************/
 .social-link > a{
@@ -77,6 +106,17 @@ Version: 1.0
 }
 .social-link > a:hover{
     background-size: 4px 50px;
+}
+/******************************* news section ***************************************/
+.page-link{
+    background-color: #ad8560;
+    color: #ffffff;
+    border: 1px solid #644a31;
+}
+.page-link:hover{
+    background-color: #cea177;
+    color: #ffffff;
+    border: 1px solid #644a31;
 }
 /******************************* footer section ***************************************/
 .logo-footer{
