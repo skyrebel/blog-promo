@@ -39,18 +39,8 @@
        add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
     /***************************************************************       widget header        ***************************************************************************/
 
-<<<<<<< HEAD
-    add_theme_support('custom-logo');
-
-        /***************************************************************       Création du Menu        ***************************************************************************/
-    function header_widgets_init()
-    {
-
-    register_sidebar(array(
-=======
     function header_widgets_init(){
         register_sidebar(array(
->>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
 
         'name' => 'promo-widget',
         'id' => 'promo-widget',
@@ -300,13 +290,7 @@ function apprenants_build_meta_box($post)
     }
     add_action('save_post_apprenants', 'apprenants_save_meta_box_data');
 
-<<<<<<< HEAD
-
-
-    /***************************************************************     PAGE  PROJETS      ***************************************************************************/
-=======
     /***************************************************************    PROJETS      ***************************************************************************/
->>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
 
 
     /***************************************************************    Post Type      ***************************************************************************/
@@ -315,7 +299,6 @@ function apprenants_build_meta_box($post)
    * On utilise une fonction pour créer notre custom post type 'Projets'
    */
 
-<<<<<<< HEAD
   function wpm_custom_post_type_projets()
   {
   
@@ -417,57 +400,6 @@ function apprenants_build_meta_box($post)
   
         
   
-=======
-    function wpm_custom_post_type_projets()
-    {
-    
-        // On rentre les différentes dénominations de notre custom post type qui seront affichées dans l'administration
-        $labels = array(
-            // Le nom au pluriel
-            'name'                => _x('projets', 'Post Type General Name'),
-            // Le nom au singulier
-            'singular_name'       => _x('projet', 'Post Type Singular Name'),
-            // Le libellé affiché dans le menu
-            'menu_name'           => __('projets'),
-            // Les différents libellés de l'administration
-            'all_items'           => __('Tous les projets'),
-            'view_item'           => __('Voir les projets'),
-            'add_new_item'        => __('Ajouter un nouveau projet'),
-            'add_new'             => __('Ajouter'),
-            'edit_item'           => __('Editer un profil'),
-            'update_item'         => __('Modifier un profil'),
-            'search_items'        => __('Rechercher un projet'),
-            'not_found'           => __('Introuvable'),
-            'not_found_in_trash'  => __('Non trouvé dans la corbeille'),
-        );
-    
-        // On peut définir ici d'autres options pour notre custom post type
-    
-        $args = array(
-            'label'               => __('projets'),
-            'description'         => __('Tout tout tout'),
-            'labels'              => $labels,
-            // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-            'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', ),
-            /* 
-                * Différentes options supplémentaires
-                */
-            'show_in_rest' => true,
-            'hierarchical'        => false,
-            'public'              => true,
-            'has_archive'         => true,
-            'rewrite'             => array('slug' => 'projets'),
-    
-        );
-    
-        // On enregistre notre custom post type qu'on nomme ici avec ses arguments
-        register_post_type('projets', $args);
-    }
-    
-    add_action('init', 'wpm_custom_post_type_projets', 0);
-    
-    /***************************************************************     Méta Box        ***************************************************************************/
->>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
   
 
     /***************************************************************  Save Meta Box        ***************************************************************************/
