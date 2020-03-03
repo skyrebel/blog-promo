@@ -28,12 +28,13 @@
 						$projets_query = new WP_Query($args);
 						// 3. on lance la boucle !
 						if ($projets_query->have_posts()) : while ($projets_query->have_posts()) : $projets_query->the_post(); 
-						echo '<a class="img-fluid" alt="photo projet">'; 
-						echo the_post_thumbnail( 'thumbnail', array('class' => 'img-project mt-5') );
+						echo '<a href="';
+							echo get_post_meta($post->ID, '_projets_lien', true); 		 
+							echo '" target="_blank">';		
+							echo the_post_thumbnail( 'thumbnail', array('class' => 'img-project mt-5', 'alt' => 'photo du projet') );
 						echo '</a>'; 
 						echo '<h4 class="text-uppercase playfair mt-4">';
-						the_title();
-						echo get_post_meta($post->ID, '_projets_titre', true) .'<br>';
+							the_title();
 						echo '</h4>'; 
 						endwhile;
 						endif;

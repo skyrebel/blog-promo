@@ -26,10 +26,10 @@
             echo '<div class="row justify-content-center">';
               echo '<div class="col-2 shadow mt-5 mx-4 py-4 bg-card-white text-center poppins">';
                 //redac identity card
-                if ( has_post_thumbnail() ): //verif si img avatar 
+                echo '<p>';
 										echo the_post_thumbnail();
-								endif;                
-                echo '<p class="h5 pt-3 font-weight-bold">';
+								echo '</p>';               
+                echo '<p class="h5 pt-3 text-uppercase font-weight-bold">';
                 echo get_post_meta($post->ID, '_apprenants_nom', true); 
                 echo get_post_meta($post->ID, '_apprenants_prenom', true);
                 echo '</p>';

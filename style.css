@@ -122,6 +122,7 @@ a{
 }
 .social-link:hover{
     background-size: 4px 50px;
+    color: black;
 }
 /******************************* news section ***************************************/
 .page-link{

@@ -345,19 +345,13 @@ function apprenants_build_meta_box($post)
       // $current_nom = get_post_meta($post->ID, '_personnes_nom', true);
   
       // retrieve the _personnes_age current value
-      $titre = get_post_meta($post->ID, '_projets_titre', true);
-      $image = get_post_meta($post->ID, '_projets_image', true);
+      $lien = get_post_meta($post->ID, '_projets_lien', true);
   
   ?>
       <div class='inside'>
-          <h3><?php _e('titre', 'projets_example_plugin'); ?></h3>
+          <h3><?php _e('lien vers votre projet', 'projets_example_plugin'); ?></h3>
           <p>
-              <input type="text" name="titre" style="width: 30vw" value="<?php echo $titre; ?>" />
-          </p>
-  
-          <h3><?php _e('image', 'projets_example_plugin'); ?></h3>
-          <p>
-              <input type="text" name="image" style="width: 30vw" value="<?php echo $image; ?>" />
+              <input type="text" name="lien" style="width: 30vw" value="<?php echo $lien; ?>" />
           </p>
       </div>
   <?php
@@ -382,16 +376,23 @@ function apprenants_build_meta_box($post)
         if (!isset($_POST['projets_meta_box_nonce']) || !wp_verify_nonce($_POST['projets_meta_box_nonce'], basename(__FILE__))) {
             return;
         }
-    
-        // return if autosave
-        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+
+         // return if autosave
+         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
             return;
         }
-    
+
         // Check the user's permissions.
         if (!current_user_can('edit_post', $post_id)) {
             return;
-        }  
+        } 
+
+        // store custom fields values
+        //lien string
+        if (isset($_REQUEST['lien'])) {
+            update_post_meta($post_id, '_projets_lien', sanitize_text_field($_POST['lien']));
+        }
+        
     }
     add_action('save_post_projets', 'projets_save_meta_box_data');
 
