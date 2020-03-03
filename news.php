@@ -14,33 +14,76 @@
 		<!-- Liste des articles  -->
 		<div class="container-fluid bg-main-news">
             <div class="container">
-                <div class="row my-5 py-5">
-                    <div class="col-6">
-						<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-							<?php if ( has_post_thumbnail() ): ?> <!--verif si img article --> 
-								<div class="post__thumbnail img-fluid" alt="img-projet" >
-									<?php the_post_thumbnail(); ?>
-								</div>
-							<?php endif; ?>
-                    </div>
-                    <div class="col-6 poppins align-self-center text-left">
-						<article class="post playfair">
-							<h4><?php the_title(); ?></h4>   <!--titre article --> 
-								<p class="post__meta poppins">
-									Publié le <?php the_time( get_option( 'date_format' ) ); ?> <!--date article --> 
-									par <?php the_author(); ?>  <!--auteur article --> 
-								</p>
-								<p class="poppins">				
-									<?php the_excerpt(); ?>   <!--extrait de l'article --> 
-								</p>
-								<p class="poppins"> <!--lien vers l'article --> 
-									<a href="<?php the_permalink(); ?>" class="post__link">Lire la suite</a>
-								</p>
-						</article>
-						<?php endwhile; endif; ?>
-                    </div>
-				</div>
-			</div>
+				<?php
+					// 1. on défini ce que l'on veut
+					$args = array(
+						'orderby'  => 'date',
+						'order'  => 'desc',
+					);
+					// 2. on exécute la query
+					$article_query = new WP_Query($args);
+					$i=0;
+					// 3. on lance la boucle !
+					if ($article_query->have_posts()) : while ($article_query->have_posts()) : $article_query->the_post();
+					if($i==0){
+						echo '<div class="row mt-5 pt-5 post">';
+							echo '<div class="col-5 offset-1">';
+								if ( has_post_thumbnail() ):
+								echo the_post_thumbnail('medium_large', array('class' => 'img-fluid'));
+								endif; 
+							echo '</div>';
+							echo '<div class="col-5 poppins align-self-center">';
+								echo '<h4 class="playfair text-uppercase">';
+								echo the_title();					
+								echo '</h4>'; 
+								echo '<p>';
+								echo the_excerpt();
+								echo '</p>';
+								echo '<p>' ,"Publié le ";
+								echo the_time ( get_option( 'date_format' ) );
+								echo '</p>';
+								echo '<p>', "par ";
+								echo the_author();
+								echo '</p>';
+								echo '<a href="';
+								echo the_permalink();
+								echo '" class="post__link article-link">Lire la suite</a>';
+							echo '</div>';
+						echo '</div>';							
+					$i=1;
+					}
+					else{
+						echo '<div class="row mt-5 pt-5">';
+							echo '<div class="col-5 offset-1 poppins align-self-center text-right">';		
+								echo '<h4 class="playfair text-uppercase">';
+								echo the_title();					
+								echo '</h4>'; 
+								echo '<p>';
+								echo the_excerpt();
+								echo '</p>';
+								echo '<p>' ,"Publié le ";
+								echo the_time ( get_option( 'date_format' ) );
+								echo '</p>';
+								echo '<p>', "par ";
+								echo the_author();
+								echo '</p>';
+								echo '<a href="';
+								echo the_permalink();
+								echo '" class="post__link article-link">Lire la suite</a>';
+							echo '</div>';
+							echo '<div class="col-5 text-left">';
+								echo the_post_thumbnail('medium_large', array('class' => 'img-fluid')); 
+							echo '</div>';
+						echo '</div>';
+					$i=0;
+					}								
+					endwhile;
+					endif;
+					// 4. On réinitialise à la requête principale (important)
+					wp_reset_postdata();
+				?>
+            </div>
+		</div>
 		<!-- pagination -->
 		<div class="container-fluid">
             <div class="container">

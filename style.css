@@ -34,7 +34,7 @@ Version: 1.0
     border-radius: 5%;
 }
 .bg-main-news{
-    background-image: url(medias/bg-main-news.png);
+    background-image: url(assets/medias/bg-main-news.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -97,17 +97,30 @@ a{
     height: 50vh !important;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
-/******************************* redac section ***************************************/
-a{
+.article-link{
     text-decoration: none!important;
-    color: black!important;
+    color: black;
     background: linear-gradient(to bottom, #ea963f 0%, #ea963f 100%);
     background-position: 0 100%;
     background-repeat: repeat-x;
     background-size: 1px 1px;
     transition: background-size .4s;
 }
-a:hover{
+.article-link:hover{
+    background-size: 4px 50px;
+    color: black;
+}
+/******************************* redac section ***************************************/
+.social-link{
+    text-decoration: none!important;
+    color: black;
+    background: linear-gradient(to bottom, #ea963f 0%, #ea963f 100%);
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 1px 1px;
+    transition: background-size .4s;
+}
+.social-link:hover{
     background-size: 4px 50px;
 }
 /******************************* news section ***************************************/
