@@ -34,7 +34,7 @@
 						echo '</h4>'; 
 						echo '<p class="img-project>';
 						echo '<a class="mt-5 img-project img-fluid img-projet" alt="photo projet">'; 
-						echo the_post_thumbnail( 'thumbnail' );
+						echo the_post_thumbnail( 'thumbnail', array('class' => 'img-project') );
 						echo '</a>';
 						echo '</p>';  
 						endwhile;
