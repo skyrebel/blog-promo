@@ -32,11 +32,9 @@
 						the_title();
 						echo get_post_meta($post->ID, '_projets_titre', true) .'<br>';
 						echo '</h4>'; 
-						echo '<p class="img-project>';
-						echo '<a class="mt-5 img-project img-fluid img-projet" alt="photo projet">'; 
+						echo '<a class="mt-5 img-fluid img-projet" alt="photo projet">'; 
 						echo the_post_thumbnail( 'thumbnail', array('class' => 'img-project') );
-						echo '</a>';
-						echo '</p>';  
+						echo '</a>'; 
 						endwhile;
 						endif;
 						// 4. On réinitialise à la requête principale (important)
@@ -116,7 +114,7 @@
 		<div class="container-fluid">
 			<div class="row py-5 my-5">
 				<div class="col-3 p-0">
-					<img src="<?php bloginfo('template_url'); ?>/assets/medias/hand.png" width="353" height="361" alt="doigt pointe carte"/>
+					<img src="<?php bloginfo('template_url'); ?>/assets/medias/hand.png" width="353" height="361" class="hand" alt="doigt pointe carte"/>
 				</div>
 				<div class="col-9">
 					<!-- Insérer la map Leaflet -->

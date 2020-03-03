@@ -11,6 +11,7 @@
   <?php get_header(); ?>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 <?php
 /*
@@ -65,6 +66,8 @@ wp_reset_postdata();
 <?php get_footer(); ?>
 =======
 =======
+=======
+>>>>>>> 4e5516a1034b873b24bfc956c3674e62469ce2d8
     <main>
       <!-- redac section -->
       <div class="container-fluid mt-5">
@@ -148,7 +151,6 @@ wp_reset_postdata();
           </div>
       </div>
     </main>
->>>>>>> 1664430d5529c6330c410ae7543f995c4054ccdb
 
   <?php get_footer(); ?>
 >>>>>>> 61f544cb07b456695edc92bccc29388b8dcf4f7b
