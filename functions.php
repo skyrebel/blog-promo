@@ -376,14 +376,14 @@
         // On rentre les différentes dénominations de notre custom post type qui seront affichées dans l'administration
         $labels = array(
             // Le nom au pluriel
-            'name'                => _x('article', 'Post Type General Name'),
+            'name'                => _x('articles', 'Post Type General Name'),
             // Le nom au singulier
             'singular_name'       => _x('article', 'Post Type Singular Name'),
             // Le libellé affiché dans le menu
-            'menu_name'           => __('article'),
+            'menu_name'           => __('articles'),
             // Les différents libellés de l'administration
-            'all_items'           => __('Tous les article'),
-            'view_item'           => __('Voir les article'),
+            'all_items'           => __('Tous les articles'),
+            'view_item'           => __('Voir les articles'),
             'add_new_item'        => __('Ajouter un nouvel article'),
             'add_new'             => __('Ajouter'),
             'edit_item'           => __('Editer un profil'),
@@ -396,7 +396,7 @@
         // On peut définir ici d'autres options pour notre custom post type
     
         $args = array(
-            'label'               => __('article'),
+            'label'               => __('articles'),
             'description'         => __('Tout tout tout'),
             'labels'              => $labels,
             // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
@@ -413,7 +413,7 @@
         );
     
         // On enregistre notre custom post type qu'on nomme ici avec ses arguments
-        register_post_type('article', $args);
+        register_post_type('articles', $args);
     }
     
     add_action('init', 'wpm_custom_post_type_article', 0);
