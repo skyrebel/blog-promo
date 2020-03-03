@@ -1,7 +1,7 @@
 	<?php 
 		if( is_front_page('home') ) { } // Teste si la page est de type home
 	?>
-
+	<link rel="stylesheet" href="style.css">
 	<?php // detecte la page comme un template à activer ds wordpress
 	/*
 	Template Name: home
@@ -47,56 +47,70 @@
                     <h3 class="text-center">
 						<img src="<?php bloginfo('template_url'); ?>/assets/medias/dernieres-depeches.png" class="my-5 img-fluid" width="260" height="172" alt="dernières dépêches"/>
 					</h3>
-                    <div class="row mt-5 pt-5">
-                        <div class="col-6 align-self-center text-right poppins">					
-							<?php
-								// 1. on défini ce que l'on veut
-								$args = array(
-								'post_type' => 'article',
-								'posts_per_page' => 3
-								);
-								// 2. on exécute la query
-								$article_query = new WP_Query($args);
-								// 3. on lance la boucle !
-								$i=0;
-								if ($article_query->have_posts()) : while ($article_query->have_posts()) : $article_query->the_post();
-								if($i==0){
-									echo '<div class="col-6 text-right pb-5">';
-										echo the_post_thumbnail( 'medium' ); 
+						<?php
+							// 1. on défini ce que l'on veut
+							$args = array(
+								'showposts' => 3,
+								'orderby'  => 'date',
+								'order'  => 'desc',
+							);
+							// 2. on exécute la query
+							$article_query = new WP_Query($args);
+							$i=0;
+							// 3. on lance la boucle !
+							if ($article_query->have_posts()) : while ($article_query->have_posts()) : $article_query->the_post();
+							if($i==0){
+								echo '<div class="row mt-5 pt-5 post">';
+									echo '<div class="col-5 offset-1">';
+										if ( has_post_thumbnail() ):
+										echo the_post_thumbnail('medium_large', array('class' => 'img-fluid'));
+										endif; 
 									echo '</div>';
-									echo '<div class="col-6 text-right">';
-										echo '<h4 class="playfair">';
-										the_title();
-										echo get_post_meta($post->ID, '_article_titre', true);
+									echo '<div class="col-5 poppins align-self-center">';
+										echo '<h4 class="playfair text-uppercase">';
+										echo the_title();					
 										echo '</h4>'; 
 										echo '<p>';
-										echo get_post_meta($post->ID, '_article_extrait', true);
+										echo the_excerpt();
 										echo '</p>';
+										echo '<p>' ,"Publié le ";
+										echo the_date();
+										echo '</p>';
+										echo '<p>', "par ";
+										echo the_author();
+										echo '</p>';
+										echo '<a href="' .the_permalink() ''" class="post__link">' "Lire la suite" '</a>'
 									echo '</div>';
-									$i=1;
-								}
-								else{
-									echo '<div class="col-6 text-right">';	
-										echo '<h4 class="playfair">';
-										the_title();
-										echo get_post_meta($post->ID, '_article_titre', true);
+								echo '</div>';							
+							$i=1;
+							}
+							else{
+								echo '<div class="row mt-5 pt-5">';
+									echo '<div class="col-5 offset-1 poppins align-self-center text-right">';		
+										echo '<h4 class="playfair text-uppercase">';
+										echo the_title();					
 										echo '</h4>'; 
 										echo '<p>';
-										echo get_post_meta($post->ID, '_article_extrait', true);
+										echo the_excerpt();
+										echo '</p>';
+										echo '<p>' ,"Publié le ";
+										echo the_date();
+										echo '</p>';
+										echo '<p>', "par ";
+										echo the_author();
 										echo '</p>';
 									echo '</div>';
-									echo '<div class="col-6 text-left d-flex justify-content-end pb-5">';
-										echo the_post_thumbnail( 'medium' ); 
+									echo '<div class="col-5 text-left">';
+										echo the_post_thumbnail('medium_large', array('class' => 'img-fluid')); 
 									echo '</div>';
-									$i=0;
-								}
-								endwhile;
-								endif;
-								// 4. On réinitialise à la requête principale (important)
-								wp_reset_postdata();
-							?>
-						</div>
-					</div>`
+								echo '</div>';
+							$i=0;
+							}								
+							endwhile;
+							endif;
+							// 4. On réinitialise à la requête principale (important)
+							wp_reset_postdata();
+						?>
 				</div>
 			</div>
 		</div>

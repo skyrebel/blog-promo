@@ -9,7 +9,7 @@
 ?>
 
   <?php get_header(); ?>
-
+  
     <main>
       <!-- redac section -->
       <div class="container-fluid mt-5">
@@ -95,3 +95,4 @@
     </main>
 
   <?php get_footer(); ?>
+

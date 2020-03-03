@@ -41,6 +41,7 @@ Version: 1.0
 .bg-footer{
     background-image: url(assets/medias/bg-footer.png);
     background-color: #c4a177;
+    background-position: center;
 }
 /******************************* font ******************************************/
 @import url('https://fonts.googleapis.com/css?family=Poppins:500&display=swap');
@@ -125,4 +126,5 @@ a{
     width: 450px;
     height: 145px;
 }
+
 
