@@ -79,7 +79,9 @@
 										echo '<p>', "par ";
 										echo the_author();
 										echo '</p>';
-										echo '<a href="' .the_permalink() ''" class="post__link">' "Lire la suite" '</a>'
+										echo '<a href="';
+										echo the_permalink();
+										echo 'class="post__link">Lire la suite</a>';
 									echo '</div>';
 								echo '</div>';							
 							$i=1;

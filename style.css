@@ -98,16 +98,16 @@ a{
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 /******************************* redac section ***************************************/
-.social-link > a{
+a{
     text-decoration: none!important;
-    color: black;
+    color: black!important;
     background: linear-gradient(to bottom, #ea963f 0%, #ea963f 100%);
     background-position: 0 100%;
     background-repeat: repeat-x;
     background-size: 1px 1px;
     transition: background-size .4s;
 }
-.social-link > a:hover{
+a:hover{
     background-size: 4px 50px;
 }
 /******************************* news section ***************************************/
