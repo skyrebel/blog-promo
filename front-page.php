@@ -27,14 +27,14 @@
 						// 2. on exécute la query
 						$projets_query = new WP_Query($args);
 						// 3. on lance la boucle !
-						if ($projets_query->have_posts()) : while ($projets_query->have_posts()) : $projets_query->the_post();
+						if ($projets_query->have_posts()) : while ($projets_query->have_posts()) : $projets_query->the_post(); 
+						echo '<a class="img-fluid" alt="photo projet">'; 
+						echo the_post_thumbnail( 'thumbnail', array('class' => 'img-project mt-5') );
+						echo '</a>'; 
 						echo '<h4 class="text-uppercase playfair mt-4">';
 						the_title();
 						echo get_post_meta($post->ID, '_projets_titre', true) .'<br>';
 						echo '</h4>'; 
-						echo '<a class="mt-5 img-project img-fluid" alt="photo projet">'; 
-						echo get_post_meta($post->ID, '_projets_image', true).'<br>';
-						echo '</a>';  
 						endwhile;
 						endif;
 						// 4. On réinitialise à la requête principale (important)
@@ -75,8 +75,9 @@
 								// 4. On réinitialise à la requête principale (important)
 								wp_reset_postdata();
 							?>
-                    </div>
-                </div>
+                    	</div>
+                	</div>
+				</div>
             </div>
         </div>
         <div class="container-fluid">
@@ -87,12 +88,12 @@
 					</h3>
 				</div>
 		</div>
-		<div class="container-fluid">
+		<div class="container-fluid pl-0">
 			<div class="row py-5 my-5">
-				<div class="col-3 p-0">
+				<div class="col-3 pl-0">
 					<img src="<?php bloginfo('template_url'); ?>/assets/medias/hand.png" width="353" height="361" alt="doigt pointe carte"/>
 				</div>
-				<div class="col-9">
+				<div class="col-7">
 					<!-- Insérer la map Leaflet -->
 					<?php dynamic_sidebar( 'map-widget' ); ?>
 				</div>

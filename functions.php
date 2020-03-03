@@ -59,8 +59,8 @@
     
             'name' => 'map-widget',
             'id' => 'map-widget',
-            'before_widget' => '<div class="col-9 filter>',
-            'after_widget' => '</div>',
+            'before_widget' => '<span>',
+            'after_widget' => '</span>',
             ));
         }
     
@@ -329,25 +329,8 @@
         // make sure the form request comes from WordPress
         wp_nonce_field(basename(__FILE__), 'projets_meta_box_nonce');
     
-        // retrieve the _personnes_nom current value
-        // $current_nom = get_post_meta($post->ID, '_personnes_nom', true);
-    
-        // retrieve the _personnes_age current value
-        $titre = get_post_meta($post->ID, '_projets_titre', true);
-        $image = get_post_meta($post->ID, '_projets_image', true);
-    
     ?>
-        <div class='inside'>
-            <h3><?php _e('titre', 'projets_example_plugin'); ?></h3>
-            <p>
-                <input type="text" name="titre" style="width: 30vw" value="<?php echo $titre; ?>" />
-            </p>
-    
-            <h3><?php _e('image', 'projets_example_plugin'); ?></h3>
-            <p>
-                <input type="text" name="image" style="width: 30vw" value="<?php echo $image; ?>" />
-            </p>
-        </div>
+
     <?php
     }
 
@@ -375,19 +358,7 @@
         // Check the user's permissions.
         if (!current_user_can('edit_post', $post_id)) {
             return;
-        }
-    
-        // store custom fields values
-        // nom string
-        if (isset($_REQUEST['titre'])) {
-            update_post_meta($post_id, '_projets_titre', sanitize_text_field($_POST['titre']));
-        }
-    
-        // store custom fields values
-        // image string
-        if (isset($_REQUEST['image'])) {
-            update_post_meta($post_id, '_projets_image', sanitize_text_field($_POST['image']));
-        }
+        }  
     }
     add_action('save_post_projets', 'projets_save_meta_box_data');
 
