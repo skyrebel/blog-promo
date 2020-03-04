@@ -84,20 +84,20 @@
 				?>
             </div>
 		</div>
-		<!-- pagination -->
 		<div class="container-fluid">
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-12 d-flex justify-content-center">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                              <li class="page-item"><a class="page-link" href="#">Précédent</a></li>
-                              <li class="page-item"><a class="page-link" href="#">1</a></li>
-                              <li class="page-item"><a class="page-link" href="#">2</a></li>
-                              <li class="page-item"><a class="page-link" href="#">3</a></li>
-                              <li class="page-item"><a class="page-link" href="#">Suivant</a></li>
-                            </ul>
-                          </nav>
+                       <!-- pagination -->
+						<?php posts_nav_link(); // Après la boucle ?>
+						<div class="site__navigation">
+							<div class="site__navigation__prev">
+								<?php previous_posts_link(); ?>
+							</div>
+							<div class="site__navigation__next">
+								<?php next_posts_link(); ?> 
+							</div>
+						</div>
                     </div>
                 </div>
             </div>

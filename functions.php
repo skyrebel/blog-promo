@@ -116,7 +116,7 @@ function wpm_custom_post_type_apprenants()
         'description'         => __('La rédaction'),
         'labels'              => $labels,
         // On définit les options disponibles dans l'éditeur de notre custom post type ( un titre, un auteur...)
-        'supports'            => array( 'title', 'editor', 'excerpt',  'thumbnail',  'revisions', 'custom-fields', ),
+        'supports'            => array('thumbnail',  'revisions'),
         /* 
            * Différentes options supplémentaires
            */
