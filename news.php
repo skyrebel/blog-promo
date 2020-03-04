@@ -17,9 +17,12 @@
 				<?php
 					// 1. on défini ce que l'on veut
 					$args = array(
+						'posts_per_page' => 4,
+						'paged' => get_query_var('paged'),
 						'orderby'  => 'date',
 						'order'  => 'desc',
 					);
+					query_posts($args);
 					// 2. on exécute la query
 					$article_query = new WP_Query($args);
 					$i=0;
@@ -43,7 +46,7 @@
 								echo the_time ( get_option( 'date_format' ) );
 								echo '</p>';
 								echo '<p>', "par ";
-								echo the_author();
+								echo get_the_author();
 								echo '</p>';
 								echo '<a href="';
 								echo the_permalink();
@@ -65,7 +68,7 @@
 								echo the_time ( get_option( 'date_format' ) );
 								echo '</p>';
 								echo '<p>', "par ";
-								echo the_author();
+								echo get_the_author();
 								echo '</p>';
 								echo '<a href="';
 								echo the_permalink();
@@ -79,29 +82,14 @@
 					}								
 					endwhile;
 					endif;
-					// 4. On réinitialise à la requête principale (important)
-					wp_reset_postdata();
+					echo '<div class="my-5 py-5">';
+						the_posts_pagination( array( 'mid_size' => 2 ) ); 
+						// 4. On réinitialise à la requête principale (important)
+						wp_reset_postdata();
+					echo '</div>';
 				?>
             </div>
 		</div>
-		<div class="container-fluid">
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-12 d-flex justify-content-center">
-                       <!-- pagination -->
-						<?php posts_nav_link(); // Après la boucle ?>
-						<div class="site__navigation">
-							<div class="site__navigation__prev">
-								<?php previous_posts_link(); ?>
-							</div>
-							<div class="site__navigation__next">
-								<?php next_posts_link(); ?> 
-							</div>
-						</div>
-                    </div>
-                </div>
-            </div>
-        </div>
 	</main>
 
 	<?php get_footer(); ?>

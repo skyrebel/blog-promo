@@ -135,6 +135,26 @@ a{
     color: #ffffff;
     border: 1px solid #644a31;
 }
+.navigation{
+    display: flex;
+    justify-content: center;   
+}
+.screen-reader-text{
+    display: none;
+}
+.page-numbers{
+    color: white;
+    /* background-color: brown; */
+    border: 2px solid black;
+    font-size: 1rem;
+    font-family: "poppins";
+    padding: 1rem;
+}
+.page-numbers:hover{
+    text-decoration: none;
+    background-color: #ea963f;
+    color: white;
+}
 /******************************* footer section ***************************************/
 .logo-footer{
     width: 450px;

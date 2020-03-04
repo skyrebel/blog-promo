@@ -396,3 +396,6 @@ function apprenants_build_meta_box($post)
     }
     add_action('save_post_projets', 'projets_save_meta_box_data');
 
+    
+    /***************************************************************  Pagination       ***************************************************************************/
+

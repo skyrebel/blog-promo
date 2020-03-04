@@ -78,7 +78,7 @@
 										echo the_time ( get_option( 'date_format' ) );
 										echo '</p>';
 										echo '<p>', "par ";
-										echo the_author();
+										echo get_the_author();
 										echo '</p>';
 										echo '<a href="';
 										echo the_permalink();
