@@ -1,144 +1,26 @@
 /*
 Theme Name: gitbreakers
-Theme URI: https://gitbreakerswp.io
-Author: SADKI Rayan, PEREIRA GOMES Fiona, SANTOS Sylvain, BACQUET Hugo.
+Theme URI: https://capitainewp.io
+Author: ACK_ATIM
 Author URI: https://dysign.fr
-Description: Blog vintage/retro en bootstrap.
+Description: Mon premier thème !
 Requires at least: WordPress 5.0
 Version: 1.0
 */
 
-/******************************* background ******************************************/
-.bg-brown{
-    background-color: #eccfad;
-}
-.bg-header{
-    background-image: url(assets/medias/bg-header.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.bg-orange{
-    background-image: url(assets/medias/label-promo.png);
-    background-repeat: no-repeat;
-    background-position: top;
-}
-.bg-blue{
-    background-color: #159099;
-}
-.bg-main{
-    background-image: url(assets/medias/bg-main.png);
-    background-repeat: no-repeat;
-}
-.bg-card-white{
-    background-color: #ffffff;
-    border-radius: 5%;
-}
-.bg-main-news{
-    background-image: url(assets/medias/bg-main-news.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.bg-footer{
-    background-image: url(assets/medias/bg-footer.png);
-    background-color: #c4a177;
-    background-position: center;
-}
-/******************************* font ******************************************/
-@import url('https://fonts.googleapis.com/css?family=Poppins:500&display=swap');
 
-.old-press{
-    font-family: 'Old Press', sans-serif;
-}
-.poppins{
-    font-family: 'Poppins', sans-serif;
-}
-@font-face {
-    font-family: 'Old Press';
-    src: url('assets/fonts/old_press-webfont.woff2') format('woff2'),
-         url('assets/fonts/old_press-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
-
-.playfair{
-    font-family: 'Playfair Display', sans-serif ;
-}
-/******************************* colors ******************************************/
-.black{
-    color: black;
-}
-/******************************* header ******************************************/
-h1 > a > img{
-    padding-bottom: 3rem;
-    padding-top: 3rem;
-    max-width:100%;
-    height:auto;
-}
-li{
-    margin: 0rem 3rem;
-    padding: 0 3rem;
-    text-transform: uppercase;
-    font-size: 2rem;
-}
-a{
-    color: black;
-}
-.nav-link:hover{
-    color: white;
-    transition: 0.5s;
-}
-/******************************* a la une section ***************************************/
-.img-project{
-    border-radius: 50%;
-}
-.leaflet-map{
-    -webkit-filter: saturate(50%);
-    height: 50vh !important;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-.article-link{
-    text-decoration: none!important;
-    color: black;
-    background: linear-gradient(to bottom, #ea963f 0%, #ea963f 100%);
-    background-position: 0 100%;
-    background-repeat: repeat-x;
-    background-size: 1px 1px;
-    transition: background-size .4s;
-}
-.article-link:hover{
-    background-size: 4px 50px;
-    color: black;
-}
-/******************************* redac section ***************************************/
-.social-link{
-    text-decoration: none!important;
-    color: black;
-    background: linear-gradient(to bottom, #ea963f 0%, #ea963f 100%);
-    background-position: 0 100%;
-    background-repeat: repeat-x;
-    background-size: 1px 1px;
-    transition: background-size .4s;
-}
-.social-link:hover{
-    background-size: 4px 50px;
-    color: black;
-}
-/******************************* news section ***************************************/
-.page-link{
-    background-color: #ad8560;
-    color: #ffffff;
-    border: 1px solid #644a31;
-}
-.page-link:hover{
-    background-color: #cea177;
-    color: #ffffff;
-    border: 1px solid #644a31;
-}
-/******************************* footer section ***************************************/
-.logo-footer{
-    width: 450px;
-    height: 145px;
+.menu {
+    position: fixed;
+    top: 0px;
 }
 
+.admin-bar .menu {
+	top: 32px; /* on prend en compte le décalage */
+}
+
+/* body{
+
+    text-align: center;
+
+} */
 
